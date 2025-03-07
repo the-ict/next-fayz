@@ -3,6 +3,7 @@ import React, { useState } from 'react'
 import { useSelector, useDispatch } from 'react-redux'
 import { removeProduct } from '@/redux/actions/productSlice'
 import format from '@/lib/format'
+import Image from 'next/image'
 
 type Props = {
     setInfoMenu: React.Dispatch<React.SetStateAction<boolean>>
@@ -56,7 +57,7 @@ export default function Informations({ setInfoMenu }: Props) {
                         type="text" placeholder='91 111 11 11'
                         onChange={(e: React.ChangeEvent<HTMLInputElement>) => setPhone(e.target.value)}
                         className='h-full flex-1 outline-none border-none' />
-                    <img src="/down.png" alt="Down" className='w-5 h-5 object-contain cursor-pointer' />
+                    <Image width={1000} height={500} layout='responsive' src="/down.png" alt="Down" className='w-5 h-5 object-contain cursor-pointer' />
                 </div>
                 {/* Yandex map */}
                 <div className='flex items-center gap-2 h-[50px] p-2 rounded border-2 border-solid border-gray-500 my-3'>
@@ -66,7 +67,7 @@ export default function Informations({ setInfoMenu }: Props) {
                         placeholder='Izoh qoldiring !'
                         onChange={(e: React.ChangeEvent<HTMLInputElement>) => setDesc(e.target.value)}
                         className='h-full flex-1 outline-none border-none' />
-                    <img src="/down.png" alt="Down" className='w-5 h-5 object-contain cursor-pointer' />
+                    <Image width={1000} height={500} layout='responsive' src="/down.png" alt="Down" className='w-5 h-5 object-contain cursor-pointer' />
                 </div>
                 <button
                     onClick={handleBought}

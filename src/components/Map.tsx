@@ -3,6 +3,7 @@
 import React from "react";
 import dynamic from "next/dynamic";
 import "leaflet/dist/leaflet.css";
+import Image from "next/image";
 
 const MapContainer = dynamic(() => import("react-leaflet").then((mod) => mod.MapContainer), { ssr: false });
 const TileLayer = dynamic(() => import("react-leaflet").then((mod) => mod.TileLayer), { ssr: false });
@@ -47,14 +48,14 @@ export default function Map() {
         </div>
         <div className="flex-1 flex flex-col gap-3 bg-[#fdfdfd] p-5 hover:bg-gray-300 transition-all rounded">
           <div className="flex items-center gap-1">
-            <img src="/location.png" alt="location" width={38} height={38} />
+            <Image src="/location.png" alt="location" width={38} height={38} />
             <div>
               <h3 className="font-bold">Farg'ona viloyati 2 - do'kon</h3>
               <p className="text-gray-500 text-[12px]">Farg'ona viloyati, Dang'ara</p>
             </div>
           </div>
           <div className="flex items-center gap-1">
-            <img src="/time.png" alt="location" width={38} height={38} />
+            <Image src="/time.png" alt="location" width={38} height={38} />
             <div>
               <h3 className="font-bold">08:00 - 20:00</h3>
               <p className="text-gray-500 text-[12px]">Ochiq</p>

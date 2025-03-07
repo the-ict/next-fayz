@@ -8,6 +8,7 @@ import format from "@/lib/format";
 import { removeProduct } from "@/redux/actions/productSlice";
 import Informations from "@/components/Informations";
 import { ProductItem } from "@/lib/data";
+import Image from "next/image";
 
 type Props = {};
 
@@ -56,14 +57,16 @@ export default function Page({ }: Props) {
                         <div className="checkout-details__items">
                             {products.products.map((item: ProductItem) => (
                                 <div className="checkout-details__item" key={item.id}>
-                                    <img src="/product1.png" alt="Book img" />
-                                    <b className="checkout-item__title">{item.name}</b>
+                                    <Image src="/product1.png" alt="Book img" width={100} height={100} />
+                                    <b className="checkout-item__title line-clamp-2">{item.name}</b>
                                     <span style={{ fontWeight: "bolder" }}>{item.overNumber}</span>
                                     <b>{format(item.price, "UZS")}</b>
-                                    <img
+                                    <Image
                                         src="/trash.png"
                                         alt=""
                                         onClick={() => dispatch(removeProduct(item.id))}
+                                        width={25}
+                                        height={25}
                                     />
                                 </div>
                             ))}

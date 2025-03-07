@@ -2,6 +2,7 @@
 
 import React, { useEffect, useState } from 'react'
 import { usePathname } from "next/navigation"
+import Image from 'next/image'
 
 type Props = {}
 
@@ -29,7 +30,7 @@ export default function Search({ }: Props) {
                 <input type="text"
                     onChange={(e: React.ChangeEvent<HTMLInputElement>): void => setSearch(e.target.value)}
                     placeholder={searched} className="flex-1 border-none bg-transparent outline-none h-full" />
-                <img src="/searchIcon.png" alt="search Icon" className='cursor-pointer' width={25} height={25} />
+                <Image src="/searchIcon.png" alt="search Icon" className='cursor-pointer' width={25} height={25} />
             </form>
         </div>
     )

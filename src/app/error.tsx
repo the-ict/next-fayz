@@ -12,8 +12,8 @@ export default function ErrorBoundary({ error, reset }: { error: Error; reset: (
             <h1 className="text-2xl font-bold text-red-600">Xatolik yuz berdi!</h1>
             <p className="text-gray-600">{error.message}</p>
             <button
-                onClick={() => reset()} // Sahifani qayta yuklash
-                className="mt-4 px-4 py-2 bg-blue-500 text-white rounded"
+                onClick={() => window.location.reload()} // Sahifani qayta yuklash
+                className="mt-4 px-4 py-2 bg-blue-500 text-white rounded cursor-pointer"
             >
                 Qayta urinish
             </button>

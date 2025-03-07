@@ -5,6 +5,7 @@ import Link from 'next/link'
 import { usePathname } from "next/navigation"
 import { useSelector } from 'react-redux'
 import { RootState } from '@/redux/store'
+import Image from 'next/image'
 
 export default function Navbar() {
   const products = useSelector((store: RootState) => store.products)
@@ -14,11 +15,11 @@ export default function Navbar() {
     <div className='h-[60px] flex items-center w-full justify-between sticky top-0 bg-[#efefef] z-99'>
       {
         menuActive && (
-          <div className="mobile-menu sm:hidden fixed top-0 left-0 h-[100vh] w-[100vh] bg-[rgba(0,0,0,0.5)] z-99" onClick={() => setMenuActive(false)}>
+          <div className="mobile-menu sm:hidden fixed top-0 left-0 h-[100vh] w-[100vh] bg-[rgba(0,0,0,0.5)] z-999999" onClick={() => setMenuActive(false)}>
             <div className='px-2 py-5 h-full w-[30%] bg-[#efefef] rounded-2xl navbar transition-all flex flex-col justify-between'>
               <div className='text-[20px] font-bold'>
                 <Link href={"/"}>
-                  <img src='/logo.png' alt='Fayz logo' width={40} height={40} />
+                  <Image src='/logo.png' alt='Fayz logo' className='w-[40px]' width={40} height={40} layout='responsive' />
                 </Link>
                 <ul className='flex flex-col gap-4 mt-10'>
                   <Link href={"/"}>
@@ -40,7 +41,7 @@ export default function Navbar() {
           </div>
         )
       }
-      <img src="/menu.png" alt="navigation-menu" width={20} height={20} onClick={() => {
+      <Image src="/menu.png" alt="navigation-menu" width={20} height={20} onClick={() => {
         setMenuActive(true)
       }} className='menu-icon sm:hidden' />
       <div className='flex items-center gap-10'>
@@ -64,7 +65,7 @@ export default function Navbar() {
       </div>
       <div className='relative'>
         <Link href={"/Checkout"}>
-          <img src="/magazine.png" alt="Magazine icon" width={25} height={25} className='cursor-pointer' />
+          <Image src="/magazine.png" alt="Magazine icon" width={25} height={25} className='cursor-pointer' />
           {
             products.products.length > 0 && (
               <div className='w-5 h-5 rounded-full bg-purple-500 absolute -top-2 -right-2 flex justify-center items-center text-white'>{products.products.length}</div>
