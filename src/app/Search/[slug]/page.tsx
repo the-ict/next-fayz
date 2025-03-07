@@ -7,7 +7,7 @@ import { usePathname } from 'next/navigation'
 import React, { useEffect, useState } from 'react'
 
 
-export default function page() {
+export default function Page() {
     const [products, setProducts] = useState<ProductItem[]>([])
     const pathname = usePathname()
 

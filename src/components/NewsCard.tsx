@@ -4,7 +4,7 @@ import React from 'react'
 export default function NewsCard() {
     return (
         <div className='w-[300px] max-sm:w-full max-sm:h-[400px] p-5 rounded bg-[#fdfdfd] h-max cursor-pointer mt-10 hover:bg-blue-400 hover:text-white transition-all'>
-            <div className='h-[400px] max-sm:h-[320px]'>
+            <div className='relative h-[400px] max-sm:h-[320px]'>
                 <Image
                     src="/new1.jpg" alt="" className='object-cover' fill />
             </div>

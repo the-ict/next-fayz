@@ -1,6 +1,5 @@
 "use client";
 
-import ProductICard from "@/components/ProductICard";
 import { getProductById } from "@/lib/getData";
 import React, { useEffect, useState } from "react";
 import { usePathname } from "next/navigation";
@@ -11,9 +10,8 @@ import { addProduct, removeProduct } from "@/redux/actions/productSlice";
 import { RootState } from "@/redux/store";
 import Image from "next/image";
 
-type Props = {};
 
-export default function Page({ }: Props) {
+export default function Page() {
     const [product, setProduct] = useState<ProductItem | null>(null);
     const [counter, setCounter] = useState<number>(1);
     const [credit, setCredit] = useState<number>(3);

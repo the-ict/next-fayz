@@ -1,9 +1,7 @@
 import Contacts from '@/components/Contacts'
 import React from 'react'
 
-type Props = {}
-
-export default function page({ }: Props) {
+export default function Page() {
   return (
     <div className='min-h-[50vh]'>
       <Contacts />

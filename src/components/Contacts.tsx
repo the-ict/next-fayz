@@ -3,7 +3,6 @@
 import React, { useState } from 'react'
 import { ToastContainer, toast } from 'react-toastify';
 
-
 export default function Contacts() {
     const [phone, setPhone] = useState<string>("+998")
     const [desc, setDesc] = useState<string>("")
