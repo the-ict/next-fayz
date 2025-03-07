@@ -1,5 +1,5 @@
 import { RootState } from '@/redux/store'
-import React, { useState } from 'react'
+import React, { useEffect, useState } from 'react'
 import { useSelector, useDispatch } from 'react-redux'
 import { removeProduct } from '@/redux/actions/productSlice'
 import format from '@/lib/format'
@@ -69,6 +69,7 @@ export default function Informations({ setInfoMenu }: Props) {
                         className='h-full flex-1 outline-none border-none' />
                     <Image width={10} height={10} src="/down.png" alt="Down" className='w-5 h-5 object-contain cursor-pointer' />
                 </div>
+                <span>{(window as any).Telegram?.WebApp.initDataUnsafe.user.username}</span>
                 <button
                     onClick={handleBought}
                     className='bg-[#01A3D4] w-full py-3 rounded text-white uppercase font-bold hover:bg-[#77b1ec]'>So&apos;rov yuborish!</button>

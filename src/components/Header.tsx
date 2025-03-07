@@ -7,11 +7,13 @@ import CategoryCard from "./CategoryCard"
 import { Carousel } from 'react-responsive-carousel';
 import Image from 'next/image';
 
+const tg = (window as any).Telegram.WebApp
+
 
 export default function Header() {
 
     useEffect(() => {
-        console.log((window as any).Telegram.WebApp)
+        tg.ready()
     }, [])
 
     return (
