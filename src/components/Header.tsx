@@ -7,7 +7,8 @@ import CategoryCard from "./CategoryCard"
 import { Carousel } from 'react-responsive-carousel';
 import Image from 'next/image';
 
-const tg = (window as any).Telegram.WebApp
+
+const tg = (window as unknown as { Telegram: { WebApp: any } }).Telegram.WebApp;
 
 
 export default function Header() {

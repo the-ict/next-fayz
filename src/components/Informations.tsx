@@ -9,6 +9,8 @@ type Props = {
     setInfoMenu: React.Dispatch<React.SetStateAction<boolean>>
 }
 
+const tg = (window as unknown as { Telegram: { WebApp: any } }).Telegram.WebApp;
+
 export default function Informations({ setInfoMenu }: Props) {
     const [phone, setPhone] = useState<string>("+998")
     const [desc, setDesc] = useState<string>("")
@@ -69,7 +71,7 @@ export default function Informations({ setInfoMenu }: Props) {
                         className='h-full flex-1 outline-none border-none' />
                     <Image width={10} height={10} src="/down.png" alt="Down" className='w-5 h-5 object-contain cursor-pointer' />
                 </div>
-                <span>{(window as any).Telegram?.WebApp.initDataUnsafe.user.username}</span>
+                <span className='text-red-700'>{tg?.initDataUnsafe?.username}</span>
                 <button
                     onClick={handleBought}
                     className='bg-[#01A3D4] w-full py-3 rounded text-white uppercase font-bold hover:bg-[#77b1ec]'>So&apos;rov yuborish!</button>
