@@ -18,16 +18,15 @@ export default function Navbar() {
           className="mobile-menu sm:hidden fixed top-0 left-0 h-[100vh] w-[100vw] bg-[rgba(0,0,0,0.5)] z-[999999]"
           onClick={() => setMenuActive(false)}
         >
-          <div className="px-2 py-5 h-full w-[30%] bg-[#efefef] rounded-2xl navbar transition-all flex flex-col justify-between">
+          <div className="px-2 py-5 h-full w-[60%] bg-[#efefef] rounded-2xl navbar transition-all flex flex-col justify-between">
             <div className="text-[20px] font-bold">
               <Link href={"/"}>
                 <Image
                   src="/logo.png"
                   alt="Fayz logo"
                   className="w-[40px]"
-                  width={40}
-                  height={40}
-                  layout="responsive"
+                  width={20}
+                  height={20}
                 />
               </Link>
               <ul className="flex flex-col gap-4 mt-10">
