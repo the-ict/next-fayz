@@ -97,7 +97,7 @@
     background-color: #1f819f;
 }
 
-@media (max-width: 379px) {
+@media (max-width:640px) {
     .checkout {
         padding: 0px 10px;
     }

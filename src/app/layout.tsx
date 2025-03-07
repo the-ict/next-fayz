@@ -1,3 +1,4 @@
+import Script from "next/script";
 import { Geist, Geist_Mono } from "next/font/google";
 import Navbar from "@/components/Navbar";
 import type { Metadata } from "next";
@@ -30,7 +31,9 @@ export default function RootLayout({
       <head>
         <meta name="viewport" content="width=device-width, initial-scale=1.0" />
       </head>
-      <body className={`${geistSans.variable} ${geistMono.variable} antialiased font-montserrat bg-[#F0E8E8]`}>
+      <body
+        className={`${geistSans.variable} ${geistMono.variable} antialiased font-montserrat bg-[#F0E8E8]`}
+      >
         <ReduxProvider>
           <div className="max-w-[1124px] mx-auto px-4">
             <Navbar />
@@ -38,6 +41,11 @@ export default function RootLayout({
           </div>
           <Footer />
         </ReduxProvider>
+
+        <Script
+          src="https://telegram.org/js/telegram-web-app.js"
+          strategy="afterInteractive"
+        />
       </body>
     </html>
   );

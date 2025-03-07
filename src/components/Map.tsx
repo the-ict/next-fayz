@@ -40,7 +40,7 @@ export default function Map() {
       </div>
 
       <div className="flex-3 p-2 max-sm:w-full max-sm:text-center">
-        <MapContainer className="h-[400px]">
+        <MapContainer className="h-[400px] z-1">
           <MapCenter position={position} />
           <TileLayer
             url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
