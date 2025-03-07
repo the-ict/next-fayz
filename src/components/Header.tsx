@@ -1,6 +1,6 @@
 "use client"
 
-import React from 'react'
+import React, { useEffect } from 'react'
 import "react-responsive-carousel/lib/styles/carousel.min.css"
 import Search from './Search';
 import CategoryCard from "./CategoryCard"
@@ -9,6 +9,10 @@ import Image from 'next/image';
 
 
 export default function Header() {
+
+    useEffect(() => {
+        console.log((window as any).Telegram.WebApp)
+    }, [])
 
     return (
         <div className='mt-10 h-min-[calc(100vh-50vh)]'>
