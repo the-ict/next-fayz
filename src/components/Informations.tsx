@@ -38,7 +38,7 @@ export default function Informations({ setInfoMenu }: Props) {
                         return (
                             <div className="checkout-details__item" key={item?.id}>
                                 <Image src="/product1.png" alt="Book img" width={20} height={20} />
-                                <b className='checkout-item__title'>{item?.name}</b>
+                                <b className='checkout-item__title line-clamp-2'>{item?.name}</b>
                                 <span style={{
                                     fontWeight: "bolder"
                                 }}>{item.overNumber}</span>
