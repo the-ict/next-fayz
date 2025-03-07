@@ -17,7 +17,7 @@ export default function Search() {
             const searchedProduct = pathname.split("/")[2]
             setSearched(searchedProduct)
         }
-    }, [])
+    }, [pathname])
 
     return (
         <div className='mt-10'>

@@ -13,8 +13,7 @@ export default function Page() {
 
     useEffect(() => {
         setProducts(searchProductsByName(pathname.split("/")[2]))
-
-    }, [])
+    }, [pathname])
 
     return (
         <div className='min-h-[50vh]'>
