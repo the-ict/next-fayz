@@ -10,8 +10,6 @@ import Informations from "@/components/Informations";
 import { ProductItem } from "@/lib/data";
 import Image from "next/image";
 
-type Props = {};
-
 type ResultType = {
     totalPrice: number;
     overNumber: number;
@@ -22,7 +20,7 @@ export type ProductsState = {
 };
 
 
-export default function Page({ }: Props) {
+export default function Page() {
     const [infoMenu, setInfoMenu] = useState<boolean>(false);
     const dispatch = useDispatch();
     const products = useSelector((store: RootState) => store.products);

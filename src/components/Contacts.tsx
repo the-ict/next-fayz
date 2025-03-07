@@ -3,9 +3,8 @@
 import React, { useState } from 'react'
 import { ToastContainer, toast } from 'react-toastify';
 
-type Props = {}
 
-export default function Contacts({ }: Props) {
+export default function Contacts() {
     const [phone, setPhone] = useState<string>("+998")
     const [desc, setDesc] = useState<string>("")
     const [buttonState, setButtonState] = useState<boolean>(false)

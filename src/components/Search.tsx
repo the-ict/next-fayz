@@ -4,9 +4,8 @@ import React, { useEffect, useState } from 'react'
 import { usePathname } from "next/navigation"
 import Image from 'next/image'
 
-type Props = {}
 
-export default function Search({ }: Props) {
+export default function Search() {
     const [search, setSearch] = useState<string>("")
     const [searched, setSearched] = useState<string>("Qidirish...")
 

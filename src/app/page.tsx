@@ -4,9 +4,8 @@ import AboutUs from '@/components/AboutUs'
 import Map from '@/components/Map'
 import Contacts from '@/components/Contacts'
 
-type Props = {}
 
-export default function page({ }: Props) {
+export default function page() {
   return (
     <div>
       <Header />

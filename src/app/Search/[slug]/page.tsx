@@ -6,9 +6,8 @@ import { searchProductsByName } from '@/lib/getData'
 import { usePathname } from 'next/navigation'
 import React, { useEffect, useState } from 'react'
 
-type Props = {}
 
-export default function page({ }: Props) {
+export default function page() {
     const [products, setProducts] = useState<ProductItem[]>([])
     const pathname = usePathname()
 

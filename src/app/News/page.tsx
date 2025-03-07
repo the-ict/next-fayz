@@ -1,9 +1,7 @@
 import React from 'react'
 import NewsCard from '@/components/NewsCard'
 
-type Props = {}
-
-export default function page({ }: Props) {
+export default function page() {
   return (
     <div className='min-h-[50vh] mt-10'>
       <h1 className='text-3xl font-bold'>Yangiliklar</h1>

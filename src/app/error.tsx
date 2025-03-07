@@ -2,7 +2,7 @@
 
 import { useEffect } from "react";
 
-export default function ErrorBoundary({ error, reset }: { error: Error; reset: () => void }) {
+export default function ErrorBoundary({ error }: { error: Error; }) {
     useEffect(() => {
         console.error("Xatolik yuz berdi:", error);
     }, [error]);

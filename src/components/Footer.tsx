@@ -1,9 +1,8 @@
 import Image from 'next/image'
 import React from 'react'
 
-type Props = {}
 
-export default function Footer({ }: Props) {
+export default function Footer() {
     return (
         <div className='mt-10 bg-[#000000] text-white flex items-center justify-between max-sm:justify-around px-30 py-30 max-sm:px-0 max-sm:py-5 max-lg:p-10'>
             <div className='flex flex-col items-center gap-2'>

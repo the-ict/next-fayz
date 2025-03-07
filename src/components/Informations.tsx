@@ -30,21 +30,21 @@ export default function Informations({ setInfoMenu }: Props) {
             }}
                 className='p-10 rounded bg-[#fdfdfd]  relative shadow-2xl w-max h-max'
             >
-                <img src="/x.png"
+                <Image src="/x.png"
                     onClick={() => setInfoMenu(false)}
-                    className='absolute right-2 top-2 cursor-pointer w-4 h-4' alt="" />
+                    className='absolute right-2 top-2 cursor-pointer object-contain' width={16} height={16} alt="" />
                 {
                     products.products.map(item => {
                         return (
                             <div className="checkout-details__item" key={item?.id}>
-                                <img src="/product1.png" alt="Book img" />
+                                <Image src="/product1.png" alt="Book img" width={20} height={20} />
                                 <b className='checkout-item__title'>{item?.name}</b>
                                 <span style={{
                                     fontWeight: "bolder"
                                 }}>{item.overNumber}</span>
 
                                 <b>{format(item?.price, "UZS")}</b>
-                                <img src="/trash.png" alt="" onClick={() => {
+                                <Image width={20} height={20} className='object-contain' src="/trash.png" alt="" onClick={() => {
                                     dispatch(removeProduct(item?.id))
                                 }} />
                             </div>
@@ -57,7 +57,7 @@ export default function Informations({ setInfoMenu }: Props) {
                         type="text" placeholder='91 111 11 11'
                         onChange={(e: React.ChangeEvent<HTMLInputElement>) => setPhone(e.target.value)}
                         className='h-full flex-1 outline-none border-none' />
-                    <Image width={1000} height={500} layout='responsive' src="/down.png" alt="Down" className='w-5 h-5 object-contain cursor-pointer' />
+                    <Image width={10} height={10} src="/down.png" alt="Down" className='w-5 h-5 object-contain cursor-pointer' />
                 </div>
                 {/* Yandex map */}
                 <div className='flex items-center gap-2 h-[50px] p-2 rounded border-2 border-solid border-gray-500 my-3'>
@@ -67,11 +67,11 @@ export default function Informations({ setInfoMenu }: Props) {
                         placeholder='Izoh qoldiring !'
                         onChange={(e: React.ChangeEvent<HTMLInputElement>) => setDesc(e.target.value)}
                         className='h-full flex-1 outline-none border-none' />
-                    <Image width={1000} height={500} layout='responsive' src="/down.png" alt="Down" className='w-5 h-5 object-contain cursor-pointer' />
+                    <Image width={10} height={10} src="/down.png" alt="Down" className='w-5 h-5 object-contain cursor-pointer' />
                 </div>
                 <button
                     onClick={handleBought}
-                    className='bg-[#01A3D4] w-full py-3 rounded text-white uppercase font-bold hover:bg-[#77b1ec]'>So'rov yuborish!</button>
+                    className='bg-[#01A3D4] w-full py-3 rounded text-white uppercase font-bold hover:bg-[#77b1ec]'>So&apos;rov yuborish!</button>
             </form>
         </div>
     )

@@ -8,9 +8,7 @@ import { Carousel } from 'react-responsive-carousel';
 import Image from 'next/image';
 
 
-type Props = {}
-
-export default function Header({ }: Props) {
+export default function Header() {
 
     return (
         <div className='mt-10 h-min-[calc(100vh-50vh)]'>

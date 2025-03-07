@@ -3,9 +3,8 @@
 import Image from 'next/image'
 import React from 'react'
 
-type Props = {}
 
-export default function AboutUs({ }: Props) {
+export default function AboutUs() {
     return (
         <div className='w-full text-center mt-12'>
             <h1 className='text-2xl font-bold'>Biz haqimizda</h1>

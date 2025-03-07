@@ -16,30 +16,14 @@ export default function Map() {
       <div className="flex flex-col gap-2 max-sm:w-full">
         <div className="flex-1 flex flex-col gap-3 bg-[#fdfdfd] p-5 hover:bg-gray-300 transition-all rounded">
           <div className="flex items-center gap-1">
-            <img src="/location.png" alt="location" width={38} height={38} />
+            <Image src="/location.png" alt="location" width={38} height={38} />
             <div>
-              <h3 className="font-bold">Farg'ona viloyati 2 - do'kon</h3>
-              <p className="text-gray-500 text-[12px]">Farg'ona viloyati, Dang'ara</p>
+              <h3 className="font-bold">Farg&apos;ona viloyati 2 - do&apos;kon</h3>
+              <p className="text-gray-500 text-[12px]">Farg&apos;ona viloyati, Dang&apos;ara</p>
             </div>
           </div>
           <div className="flex items-center gap-1">
-            <img src="/time.png" alt="location" width={38} height={38} />
-            <div>
-              <h3 className="font-bold">08:00 - 20:00</h3>
-              <p className="text-gray-500 text-[12px]">Ochiq</p>
-            </div>
-          </div>
-        </div>
-        <div className="flex-1 flex flex-col gap-3 bg-[#fdfdfd] p-5 hover:bg-gray-300 transition-all rounded">
-          <div className="flex items-center gap-1">
-            <img src="/location.png" alt="location" width={38} height={38} />
-            <div>
-              <h3 className="font-bold">Farg'ona viloyati 2 - do'kon</h3>
-              <p className="text-gray-500 text-[12px]">Farg'ona viloyati, Dang'ara</p>
-            </div>
-          </div>
-          <div className="flex items-center gap-1">
-            <img src="/time.png" alt="location" width={38} height={38} />
+            <Image src="/time.png" alt="time" width={38} height={38} />
             <div>
               <h3 className="font-bold">08:00 - 20:00</h3>
               <p className="text-gray-500 text-[12px]">Ochiq</p>
@@ -50,12 +34,28 @@ export default function Map() {
           <div className="flex items-center gap-1">
             <Image src="/location.png" alt="location" width={38} height={38} />
             <div>
-              <h3 className="font-bold">Farg'ona viloyati 2 - do'kon</h3>
-              <p className="text-gray-500 text-[12px]">Farg'ona viloyati, Dang'ara</p>
+              <h3 className="font-bold">Farg&apos;ona viloyati 2 - do&apos;kon</h3>
+              <p className="text-gray-500 text-[12px]">Farg&apos;ona viloyati, Dang&apos;ara</p>
             </div>
           </div>
           <div className="flex items-center gap-1">
-            <Image src="/time.png" alt="location" width={38} height={38} />
+            <Image src="/time.png" alt="time" width={38} height={38} />
+            <div>
+              <h3 className="font-bold">08:00 - 20:00</h3>
+              <p className="text-gray-500 text-[12px]">Ochiq</p>
+            </div>
+          </div>
+        </div>
+        <div className="flex-1 flex flex-col gap-3 bg-[#fdfdfd] p-5 hover:bg-gray-300 transition-all rounded">
+          <div className="flex items-center gap-1">
+            <Image src="/location.png" alt="location" width={38} height={38} />
+            <div>
+              <h3 className="font-bold">Farg&apos;ona viloyati 2 - do&apos;kon</h3>
+              <p className="text-gray-500 text-[12px]">Farg&apos;ona viloyati, Dang&apos;ara</p>
+            </div>
+          </div>
+          <div className="flex items-center gap-1">
+            <Image src="/time.png" alt="time" width={38} height={38} />
             <div>
               <h3 className="font-bold">08:00 - 20:00</h3>
               <p className="text-gray-500 text-[12px]">Ochiq</p>
@@ -71,7 +71,7 @@ export default function Map() {
           />
           <Marker position={[40.3842, 71.7843]}>
             <Popup>
-              <strong>Do‘kon manzili</strong> <br /> Farg'ona viloyati, Dang'ara
+              <strong>Do‘kon manzili</strong> <br /> Farg&apos;ona viloyati, Dang&apos;ara
             </Popup>
           </Marker>
         </MapContainer>
