@@ -1,7 +1,7 @@
 "use client"
 
 import { RootState } from '@/redux/store'
-import React, { useState } from 'react'
+import React, { useEffect, useState } from 'react'
 import { useSelector, useDispatch } from 'react-redux'
 import { removeProduct } from '@/redux/actions/productSlice'
 import format from '@/lib/format'
@@ -15,8 +15,14 @@ type Props = {
 
 export default function Informations({ setInfoMenu }: Props) {
     const [phone, setPhone] = useState<string>("+998")
+    const [username, setUsername] = useState<string>("")
     const [desc, setDesc] = useState<string>("")
 
+    useEffect(() => {
+        WebApp.ready()
+
+        setUsername(WebApp.initDataUnsafe.user?.username || "Ghost")
+    }, [])
 
     const handleBought = (): void => {
         console.log(phone, desc)
@@ -24,7 +30,6 @@ export default function Informations({ setInfoMenu }: Props) {
 
     const dispatch = useDispatch()
     const products = useSelector((store: RootState) => store.products)
-
 
 
     return (
@@ -63,7 +68,6 @@ export default function Informations({ setInfoMenu }: Props) {
                         className='h-full flex-1 outline-none border-none' />
                     <Image width={10} height={10} src="/down.png" alt="Down" className='w-5 h-5 object-contain cursor-pointer' />
                 </div>
-                {/* Yandex map */}
                 <div className='flex items-center gap-2 h-[50px] p-2 rounded border-2 border-solid border-gray-500 my-3'>
                     <input
                         value={desc}
@@ -73,7 +77,7 @@ export default function Informations({ setInfoMenu }: Props) {
                         className='h-full flex-1 outline-none border-none' />
                     <Image width={10} height={10} src="/down.png" alt="Down" className='w-5 h-5 object-contain cursor-pointer' />
                 </div>
-                <span>{WebApp.initDataUnsafe.user?.username}</span>
+                <p className='text-red font-bold text-2xl'>{username && username}</p>
                 <button
                     onClick={handleBought}
                     className='bg-[#01A3D4] w-full py-3 rounded text-white uppercase font-bold hover:bg-[#77b1ec]'>So&apos;rov yuborish!</button>
