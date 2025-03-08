@@ -19,7 +19,7 @@ export default function Informations({ setInfoMenu }: Props) {
     const [isTelegram, setIsTelegarm] = useState<boolean>(false)
 
     useEffect(() => {
-        if (typeof window !== "undefined" && window.Telegram && window.Telegram.WebApp) {
+        if (typeof window !== "undefined" && window.Telegram && window.Telegram.WebApp.isActive) {
             setIsTelegarm(true)
         }
     }, [])
