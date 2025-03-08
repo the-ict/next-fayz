@@ -16,31 +16,22 @@ export default function Informations({ setInfoMenu }: Props) {
     const [desc, setDesc] = useState<string>("")
     const [name, setName] = useState<string>("")
     const [last_name, setLastName] = useState<string>("")
-    const [isTelegram, setIsTelegarm] = useState<boolean>(false)
 
     useEffect(() => {
-        if (typeof window !== "undefined" && window.Telegram) {
-            window.Telegram.WebApp.ready()
-            if (window.Telegram.WebApp.isActive) {
-                setIsTelegarm(true)
-            }
-        }
+        window.Telegram.WebApp.ready()
     }, [])
 
-    useEffect(() => {
-        if (isTelegram && phone && desc && name && last_name) {
-            window.Telegram.WebApp.MainButton.show()
-            window.Telegram.WebApp.MainButton.setParams({
-                text: "Yuborish",
-                text_color: "#ffffff"
-            })
-        } else {
-            setIsTelegarm(false)
-        }
-    }, [phone, desc, name, last_name, isTelegram])
 
     const handleBought = (): void => {
-        console.log(phone, desc)
+
+        if (window.Telegram.WebApp.isActive) {
+            window.Telegram.WebApp.showAlert("Telegrma WEb app active")
+        }
+        else {
+            alert("Web site active")
+        }
+
+
     }
 
     const dispatch = useDispatch()
@@ -113,13 +104,9 @@ export default function Informations({ setInfoMenu }: Props) {
                     <Image width={10} height={10} src="/down.png" alt="Down" className='w-5 h-5 object-contain cursor-pointer' />
                 </div>
 
-                {
-                    isTelegram === false && (
-                        <button
-                            onClick={handleBought}
-                            className='bg-[#01A3D4] w-full py-3 rounded text-white uppercase font-bold hover:bg-[#77b1ec]'>So&apos;rov yuborish!</button>
-                    )
-                }
+                <button
+                    onClick={handleBought}
+                    className='bg-[#01A3D4] w-full py-3 rounded text-white uppercase font-bold hover:bg-[#77b1ec]'>So&apos;rov yuborish!</button>
             </form>
         </div>
     )
