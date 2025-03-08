@@ -39,7 +39,10 @@ export default function Page() {
     };
 
     return (
-        <div className="min-h-[50vh]">
+        <div className="min-h-[50vh]" style={{
+            backgroundColor: window.Telegram.WebApp.themeParams.bg_color,
+            color: window.Telegram.WebApp.themeParams.text_color
+        }}>
             <div className="flex items-start gap-5 mt-10 max-sm:flex-col">
                 <div className="flex-3 h-[348px] max-sm:w-full flex justify-center relative bg-[#F8F4F4] p-3">
                     <Image

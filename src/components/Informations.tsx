@@ -14,13 +14,9 @@ type Props = {
 export default function Informations({ setInfoMenu }: Props) {
     const [phone, setPhone] = useState<string>("+998")
     const [desc, setDesc] = useState<string>("")
-    // const [username, setUsername] = useState<string | null>(null);
 
     const handleBought = (): void => {
         console.log(phone, desc)
-        if (window.Telegram.WebApp.initDataUnsafe) {
-            alert("Salom hammaga !")
-        }
     }
 
     const dispatch = useDispatch()
@@ -32,10 +28,6 @@ export default function Informations({ setInfoMenu }: Props) {
                 e.preventDefault()
             }}
                 className='p-10 rounded bg-[#fdfdfd]  relative shadow-2xl w-max h-max'
-                style={{
-                    backgroundColor: window.Telegram.WebApp.themeParams.bg_color,
-                    color: window.Telegram.WebApp.themeParams.text_color
-                }}
             >
                 <Image src="/x.png"
                     onClick={() => setInfoMenu(false)}

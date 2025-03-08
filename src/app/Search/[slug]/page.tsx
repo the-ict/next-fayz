@@ -16,7 +16,10 @@ export default function Page() {
     }, [pathname])
 
     return (
-        <div className='min-h-[50vh]'>
+        <div className='min-h-[50vh]' style={{
+            backgroundColor: window.Telegram.WebApp.themeParams.bg_color,
+            color: window.Telegram.WebApp.themeParams.text_color
+        }}>
             <Search />
             <div className='flex flex-wrap gap-2 mt-10'>
                 {

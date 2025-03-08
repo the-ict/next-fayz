@@ -37,7 +37,11 @@ export default function Page() {
 
 
     return (
-        <div className="min-h-[50vh] mt-10">
+        <div className="min-h-[50vh] mt-10"
+            style={{
+                backgroundColor: window.Telegram.WebApp.themeParams.bg_color,
+                color: window.Telegram.WebApp.themeParams.text_color
+            }}>
             {infoMenu && <Informations setInfoMenu={setInfoMenu} />}
 
             <div className="checkout">
