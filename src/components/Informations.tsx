@@ -18,6 +18,7 @@ export default function Informations({ setInfoMenu }: Props) {
 
     useEffect(() => {
         if (typeof window !== "undefined" && window.Telegram?.WebApp?.initDataUnsafe?.user) {
+            alert("ishlavotti!")
             setUsername(window.Telegram.WebApp.initDataUnsafe.user.username || "")
         }
     }, [])
