@@ -34,6 +34,8 @@ export default function Informations({ setInfoMenu }: Props) {
                 text: "Yuborish",
                 text_color: "#ffffff"
             })
+        } else {
+            setIsTelegarm(false)
         }
     }, [phone, desc, name, last_name, isTelegram])
 
