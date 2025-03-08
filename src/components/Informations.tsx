@@ -91,6 +91,7 @@ export default function Informations({ setInfoMenu }: Props) {
                 <button
                     onClick={handleBought}
                     className='bg-[#01A3D4] w-full py-3 rounded text-white uppercase font-bold hover:bg-[#77b1ec]'>So&apos;rov yuborish!</button>
+                <b>{window.Telegram.WebApp.initDataUnsafe.chat?.id}</b>
             </form>
         </div>
     )
