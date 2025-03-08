@@ -17,51 +17,59 @@ export default function Informations({ setInfoMenu }: Props) {
     const [desc, setDesc] = useState<string>("");
     const [name, setName] = useState<string>("");
     const [last_name, setLastName] = useState<string>("");
-    const [isSent, setIsSent] = useState<boolean>(false); // Bu state bir marta yuborilishini ta'minlaydi
+    const [isWebApp, setIsWebapp] = useState<boolean>(false)
 
     useEffect(() => {
-        // Telegram WebAppni tayyor qilish
         if (window.Telegram && window.Telegram.WebApp) {
             window.Telegram.WebApp.ready();
+            setIsWebapp(true)
         }
     }, []);
 
+    useEffect(() => {
+        if (phone && desc && name && last_name) {
+            window.Telegram.WebApp.MainButton.setParams({
+                text: "SO'RO'V YUBORISH!"
+            })
+            window.Telegram.WebApp.MainButton.show()
+            setIsWebapp(true)
+        } else {
+            setIsWebapp(false)
+        }
+    }, [phone, desc, name, last_name])
+
     const handleBought = async () => {
-        if (typeof window !== "undefined" && window.Telegram && window.Telegram.WebApp) {
-            if (window.Telegram.WebApp.isActive && !isSent) {
-                const data: object = {
-                    phone,
-                    desc,
-                    name,
-                    last_name,
-                    products: products.products,
-                };
+        if (window.Telegram.WebApp.isActive && isWebApp) {
+            const data: object = {
+                phone,
+                desc,
+                name,
+                last_name,
+                products: products.products,
+            };
 
-                // WebApp ishlayotgan bo'lsa, faqat sendData yuborish
-                window.Telegram.WebApp.sendData(JSON.stringify(data));
-                setIsSent(true); // Xabar yuborilganini belgilash
-            } else if (!window.Telegram.WebApp.isActive) {
-                // WebApp ishlamayotgan bo'lsa, API orqali yuborish
-                try {
-                    const response = await fetch('/api/send', {
-                        method: 'POST',
-                        headers: { 'Content-Type': 'application/json' },
-                        body: JSON.stringify({ phone, desc, subject: "Sotib olish", name, last_name }),
-                    });
+            window.Telegram.WebApp.sendData(JSON.stringify(data));
 
-                    const data = await response.json();
+        } else if (!window.Telegram.WebApp.isActive) {
+            try {
+                const response = await fetch('/api/send', {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify({ phone, desc, subject: "Sotib olish", name, last_name }),
+                });
 
-                    if (response.ok) {
-                        console.log("Email muvaffaqiyatli yuborildi:", data);
-                        setPhone("+998");
-                        setDesc("");
-                        toast("Xabaringiz muvaffaqiyatli yuborildi");
-                    } else {
-                        toast("Xatolik yuz ber!");
-                    }
-                } catch (error) {
-                    console.error("Server xatosi:", error);
+                const data = await response.json();
+
+                if (response.ok) {
+                    console.log("Email muvaffaqiyatli yuborildi:", data);
+                    setPhone("+998");
+                    setDesc("");
+                    toast("Xabaringiz muvaffaqiyatli yuborildi");
+                } else {
+                    toast("Xatolik yuz ber!");
                 }
+            } catch (error) {
+                console.error("Server xatosi:", error);
             }
         }
     };
@@ -73,7 +81,10 @@ export default function Informations({ setInfoMenu }: Props) {
         <div className='fixed top-0 left-0 w-screen h-screen bg-[rgba(0,0,0,0.5)] z-99 flex justify-center items-center'>
             <ToastContainer />
             <form onSubmit={(e: React.ChangeEvent<HTMLFormElement>) => e.preventDefault()} className='p-10 rounded bg-[#fdfdfd] relative shadow-2xl w-max h-max'>
-                <Image src="/x.png" onClick={() => setInfoMenu(false)} className='absolute right-2 top-2 cursor-pointer object-contain' width={16} height={16} alt="" />
+                <Image src="/x.png" onClick={() => {
+                    setInfoMenu(false)
+                    window.Telegram.WebApp.MainButton.hide()
+                }} className='absolute right-2 top-2 cursor-pointer object-contain' width={16} height={16} alt="" />
                 {
                     products.products.map(item => (
                         <div className="checkout-details__item" key={item?.id}>
@@ -101,7 +112,12 @@ export default function Informations({ setInfoMenu }: Props) {
                     <input value={desc} type="text" placeholder='Izoh qoldiring !' onChange={(e: React.ChangeEvent<HTMLInputElement>) => setDesc(e.target.value)} className='h-full flex-1 outline-none border-none' />
                     <Image width={10} height={10} src="/down.png" alt="Down" className='w-5 h-5 object-contain cursor-pointer' />
                 </div>
-                <button onClick={handleBought} className='bg-[#01A3D4] w-full py-3 rounded text-white uppercase font-bold hover:bg-[#77b1ec]'>So&apos;rov yuborish!</button>
+
+                {
+                    isWebApp === false && (
+                        <button onClick={handleBought} className='bg-[#01A3D4] w-full py-3 rounded text-white uppercase font-bold hover:bg-[#77b1ec]'>So&apos;rov yuborish!</button>
+                    )
+                }
             </form>
         </div>
     );
