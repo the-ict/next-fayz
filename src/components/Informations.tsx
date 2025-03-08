@@ -1,7 +1,7 @@
 "use client"
 
 import { RootState } from '@/redux/store'
-import React, { useEffect, useState } from 'react'
+import React, { useState } from 'react'
 import { useSelector, useDispatch } from 'react-redux'
 import { removeProduct } from '@/redux/actions/productSlice'
 import format from '@/lib/format'
@@ -14,17 +14,13 @@ type Props = {
 export default function Informations({ setInfoMenu }: Props) {
     const [phone, setPhone] = useState<string>("+998")
     const [desc, setDesc] = useState<string>("")
-    const [username, setUsername] = useState<string>("")
-
-    useEffect(() => {
-        if (typeof window !== "undefined" && window.Telegram?.WebApp?.initDataUnsafe?.user) {
-            alert("ishlavotti!")
-            setUsername(window.Telegram.WebApp.initDataUnsafe.user.username || "")
-        }
-    }, [])
+    const [username, setUsername] = useState<string | null>(null);
 
     const handleBought = (): void => {
         console.log(phone, desc)
+        if (window.Telegram.WebApp.initDataUnsafe) {
+            alert("Salom hammaga !")
+        }
     }
 
     const dispatch = useDispatch()
@@ -36,6 +32,10 @@ export default function Informations({ setInfoMenu }: Props) {
                 e.preventDefault()
             }}
                 className='p-10 rounded bg-[#fdfdfd]  relative shadow-2xl w-max h-max'
+                style={{
+                    backgroundColor: window.Telegram.WebApp.themeParams.bg_color,
+                    color: window.Telegram.WebApp.themeParams.text_color
+                }}
             >
                 <Image src="/x.png"
                     onClick={() => setInfoMenu(false)}
@@ -78,9 +78,6 @@ export default function Informations({ setInfoMenu }: Props) {
                 <button
                     onClick={handleBought}
                     className='bg-[#01A3D4] w-full py-3 rounded text-white uppercase font-bold hover:bg-[#77b1ec]'>So&apos;rov yuborish!</button>
-
-                {/* username ni chiqarish */}
-                <div>{username}</div>
             </form>
         </div>
     )
