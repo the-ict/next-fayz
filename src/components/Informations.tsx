@@ -14,6 +14,8 @@ type Props = {
 export default function Informations({ setInfoMenu }: Props) {
     const [phone, setPhone] = useState<string>("+998")
     const [desc, setDesc] = useState<string>("")
+    const [name, setName] = useState<string>("")
+    const [last_name, setLastName] = useState<string>("")
 
     const handleBought = (): void => {
         console.log(phone, desc)
@@ -60,6 +62,24 @@ export default function Informations({ setInfoMenu }: Props) {
                 </div>
                 <div className='flex items-center gap-2 h-[50px] p-2 rounded border-2 border-solid border-gray-500 my-3'>
                     <input
+                        value={name}
+                        type="text"
+                        placeholder='Ismingiz !'
+                        onChange={(e: React.ChangeEvent<HTMLInputElement>) => setName(e.target.value)}
+                        className='h-full flex-1 outline-none border-none' />
+                    <Image width={10} height={10} src="/down.png" alt="Down" className='w-5 h-5 object-contain cursor-pointer' />
+                </div>
+                <div className='flex items-center gap-2 h-[50px] p-2 rounded border-2 border-solid border-gray-500 my-3'>
+                    <input
+                        value={last_name}
+                        type="text"
+                        placeholder='Familiyangiz !'
+                        onChange={(e: React.ChangeEvent<HTMLInputElement>) => setLastName(e.target.value)}
+                        className='h-full flex-1 outline-none border-none' />
+                    <Image width={10} height={10} src="/down.png" alt="Down" className='w-5 h-5 object-contain cursor-pointer' />
+                </div>
+                <div className='flex items-center gap-2 h-[50px] p-2 rounded border-2 border-solid border-gray-500 my-3'>
+                    <input
                         value={desc}
                         type="text"
                         placeholder='Izoh qoldiring !'
@@ -67,6 +87,7 @@ export default function Informations({ setInfoMenu }: Props) {
                         className='h-full flex-1 outline-none border-none' />
                     <Image width={10} height={10} src="/down.png" alt="Down" className='w-5 h-5 object-contain cursor-pointer' />
                 </div>
+
                 <button
                     onClick={handleBought}
                     className='bg-[#01A3D4] w-full py-3 rounded text-white uppercase font-bold hover:bg-[#77b1ec]'>So&apos;rov yuborish!</button>
