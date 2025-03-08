@@ -7,6 +7,7 @@ import { removeProduct } from '@/redux/actions/productSlice';
 import { toast, ToastContainer } from "react-toastify";
 import format from '@/lib/format';
 import Image from 'next/image';
+import WebApp from '@twa-dev/sdk';
 
 type Props = {
     setInfoMenu: React.Dispatch<React.SetStateAction<boolean>>;
@@ -17,29 +18,17 @@ export default function Informations({ setInfoMenu }: Props) {
     const [desc, setDesc] = useState<string>("");
     const [name, setName] = useState<string>("");
     const [last_name, setLastName] = useState<string>("");
-    const [isWebApp, setIsWebapp] = useState<boolean>(false)
+
 
     useEffect(() => {
-        if (window.Telegram && window.Telegram.WebApp) {
-            window.Telegram.WebApp.ready();
-            setIsWebapp(true)
+        if (WebApp.isActive) {
+            WebApp.ready()
         }
     }, []);
 
-    useEffect(() => {
-        if (phone && desc && name && last_name) {
-            window.Telegram.WebApp.MainButton.setParams({
-                text: "SO'RO'V YUBORISH!"
-            })
-            window.Telegram.WebApp.MainButton.show()
-            setIsWebapp(true)
-        } else {
-            setIsWebapp(false)
-        }
-    }, [phone, desc, name, last_name])
-
     const handleBought = async () => {
-        if (window.Telegram.WebApp.isActive && isWebApp) {
+        if (WebApp.isActive) {
+            WebApp.showAlert("Something like thiss!")
             const data: object = {
                 phone,
                 desc,
@@ -50,7 +39,8 @@ export default function Informations({ setInfoMenu }: Props) {
 
             window.Telegram.WebApp.sendData(JSON.stringify(data));
 
-        } else if (!window.Telegram.WebApp.isActive) {
+        } else if (!WebApp.isActive) {
+            alert("Something like thiss website!")
             try {
                 const response = await fetch('/api/send', {
                     method: 'POST',
@@ -81,10 +71,7 @@ export default function Informations({ setInfoMenu }: Props) {
         <div className='fixed top-0 left-0 w-screen h-screen bg-[rgba(0,0,0,0.5)] z-99 flex justify-center items-center'>
             <ToastContainer />
             <form onSubmit={(e: React.ChangeEvent<HTMLFormElement>) => e.preventDefault()} className='p-10 rounded bg-[#fdfdfd] relative shadow-2xl w-max h-max'>
-                <Image src="/x.png" onClick={() => {
-                    setInfoMenu(false)
-                    window.Telegram.WebApp.MainButton.hide()
-                }} className='absolute right-2 top-2 cursor-pointer object-contain' width={16} height={16} alt="" />
+                <Image src="/x.png" onClick={() => setInfoMenu(false)} className='absolute right-2 top-2 cursor-pointer object-contain' width={16} height={16} alt="" />
                 {
                     products.products.map(item => (
                         <div className="checkout-details__item" key={item?.id}>
@@ -112,12 +99,7 @@ export default function Informations({ setInfoMenu }: Props) {
                     <input value={desc} type="text" placeholder='Izoh qoldiring !' onChange={(e: React.ChangeEvent<HTMLInputElement>) => setDesc(e.target.value)} className='h-full flex-1 outline-none border-none' />
                     <Image width={10} height={10} src="/down.png" alt="Down" className='w-5 h-5 object-contain cursor-pointer' />
                 </div>
-
-                {
-                    isWebApp === false && (
-                        <button onClick={handleBought} className='bg-[#01A3D4] w-full py-3 rounded text-white uppercase font-bold hover:bg-[#77b1ec]'>So&apos;rov yuborish!</button>
-                    )
-                }
+                <button onClick={handleBought} className='bg-[#01A3D4] w-full py-3 rounded text-white uppercase font-bold hover:bg-[#77b1ec]'>So&apos;rov yuborish!</button>
             </form>
         </div>
     );
