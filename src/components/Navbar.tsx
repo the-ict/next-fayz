@@ -12,7 +12,7 @@ export default function Navbar() {
   const [menuActive, setMenuActive] = useState<boolean>(false);
   const pathname = usePathname();
   return (
-    <div className="h-[60px] flex items-center w-full justify-between sticky top-0 bg-[#efefef] z-[1]">
+    <div className="h-[60px] flex items-center w-full justify-between sticky top-0 bg-[#efefef] z-[10]">
       {menuActive && (
         <div
           className="mobile-menu sm:hidden fixed top-0 left-0 h-[100vh] w-[100vw] bg-[rgba(0,0,0,0.5)] z-[999999]"
