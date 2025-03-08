@@ -1,7 +1,7 @@
 "use client"
 
 import { RootState } from '@/redux/store'
-import React, { useState } from 'react'
+import React, { useEffect, useState } from 'react'
 import { useSelector, useDispatch } from 'react-redux'
 import { removeProduct } from '@/redux/actions/productSlice'
 import format from '@/lib/format'
@@ -16,6 +16,14 @@ export default function Informations({ setInfoMenu }: Props) {
     const [desc, setDesc] = useState<string>("")
     const [name, setName] = useState<string>("")
     const [last_name, setLastName] = useState<string>("")
+    const [isTelegram, setIsTelegarm] = useState<boolean>(false)
+
+    useEffect(() => {
+        if (window.Telegram.WebApp) {
+            setIsTelegarm(true)
+            window.Telegram.WebApp.MainButton.show()
+        }
+    }, [])
 
     const handleBought = (): void => {
         console.log(phone, desc)
@@ -88,10 +96,13 @@ export default function Informations({ setInfoMenu }: Props) {
                     <Image width={10} height={10} src="/down.png" alt="Down" className='w-5 h-5 object-contain cursor-pointer' />
                 </div>
 
-                <button
-                    onClick={handleBought}
-                    className='bg-[#01A3D4] w-full py-3 rounded text-white uppercase font-bold hover:bg-[#77b1ec]'>So&apos;rov yuborish!</button>
-                <b>{window.Telegram.WebApp.initDataUnsafe.chat?.id}</b>
+                {
+                    !isTelegram && (
+                        <button
+                            onClick={handleBought}
+                            className='bg-[#01A3D4] w-full py-3 rounded text-white uppercase font-bold hover:bg-[#77b1ec]'>So&apos;rov yuborish!</button>
+                    )
+                }
             </form>
         </div>
     )
