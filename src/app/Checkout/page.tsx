@@ -1,6 +1,6 @@
 "use client";
 
-import React, { useEffect, useState } from "react";
+import React, { useState } from "react";
 import "./checkout.css";
 import { useDispatch, useSelector } from "react-redux";
 import { RootState } from "@/redux/store";
@@ -9,7 +9,6 @@ import { removeProduct } from "@/redux/actions/productSlice";
 import Informations from "@/components/Informations";
 import { ProductItem } from "@/lib/data";
 import Image from "next/image";
-import { usePathname, useSearchParams } from "next/navigation";
 
 type ResultType = {
     totalPrice: number;
@@ -25,7 +24,6 @@ export default function Page() {
     const [infoMenu, setInfoMenu] = useState<boolean>(false);
     const dispatch = useDispatch();
     const products = useSelector((store: RootState) => store.products);
-    const [isWebApp, setIsWebApp] = useState<"true" | "false">("false")
 
     const result: ResultType = products.products.reduce(
         (acc, product) => {
@@ -36,24 +34,9 @@ export default function Page() {
         { totalPrice: 0, overNumber: 0 } as ResultType
     );
 
-    const pathname = usePathname()
-    const searchParams = useSearchParams()
-
-    useEffect(() => {
-        if (typeof window !== "undefined") {
-            const webApp = searchParams?.get("web_app")
-            if (webApp) {
-                setIsWebApp(webApp as "true" | "false")
-            } else {
-                window.location.replace("/Checkout/?web_app=false")
-            }
-        }
-    }, [pathname, searchParams])
-
-
     return (
         <div className="min-h-[50vh] mt-10" >
-            {infoMenu && <Informations setInfoMenu={setInfoMenu} isWebApp={isWebApp} />}
+            {infoMenu && <Informations setInfoMenu={setInfoMenu} />}
 
             <div className="checkout">
                 <div className="checkout-content">
