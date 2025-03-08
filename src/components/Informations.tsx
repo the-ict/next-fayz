@@ -18,20 +18,17 @@ export default function Informations({ setInfoMenu }: Props) {
     const [last_name, setLastName] = useState<string>("")
 
     useEffect(() => {
-        window.Telegram.WebApp.ready()
+        if (window.Telegram.WebApp) {
+            window.Telegram.WebApp.ready();
+        }
     }, [])
 
-
     const handleBought = (): void => {
-
-        if (window.Telegram.WebApp.isActive) {
-            window.Telegram.WebApp.showAlert("Telegrma WEb app active")
+        if (window.Telegram.WebApp && window.Telegram.WebApp.isActive) {
+            window.Telegram.WebApp.showAlert("Telegram Web App active");
+        } else {
+            alert("Website active");
         }
-        else {
-            alert("Web site active")
-        }
-
-
     }
 
     const dispatch = useDispatch()
@@ -42,12 +39,11 @@ export default function Informations({ setInfoMenu }: Props) {
             <form onSubmit={(e: React.ChangeEvent<HTMLFormElement>) => {
                 e.preventDefault()
             }}
-                className='p-10 rounded bg-[#fdfdfd]  relative shadow-2xl w-max h-max'
+                className='p-10 rounded bg-[#fdfdfd] relative shadow-2xl w-max h-max'
             >
                 <Image src="/x.png"
                     onClick={() => {
                         setInfoMenu(false)
-                        window.Telegram.WebApp.MainButton.hide()
                     }}
                     className='absolute right-2 top-2 cursor-pointer object-contain' width={16} height={16} alt="" />
                 {
