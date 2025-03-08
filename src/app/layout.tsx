@@ -37,6 +37,10 @@ export default function RootLayout({
       </head>
       <body
         className={`${geistSans.variable} ${geistMono.variable} antialiased font-montserrat bg-[#F0E8E8]`}
+        style={{
+          backgroundColor: window.Telegram.WebApp.themeParams.bg_color,
+          color: window.Telegram.WebApp.themeParams.text_color
+        }}
       >
         <ReduxProvider>
           <div className="max-w-[1124px] mx-auto px-4">

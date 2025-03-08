@@ -1,12 +1,11 @@
 "use client"
 
 import { RootState } from '@/redux/store'
-import React, { useEffect, useState } from 'react'
+import React, { useState } from 'react'
 import { useSelector, useDispatch } from 'react-redux'
 import { removeProduct } from '@/redux/actions/productSlice'
 import format from '@/lib/format'
 import Image from 'next/image'
-import WebApp from "@twa-dev/sdk"
 
 
 interface UserData {
@@ -25,14 +24,6 @@ type Props = {
 export default function Informations({ setInfoMenu }: Props) {
     const [phone, setPhone] = useState<string>("+998")
     const [desc, setDesc] = useState<string>("")
-
-    const [userData, setUserData] = useState<UserData | null>(null);
-    useEffect(() => {
-        if (typeof window !== "undefined" && WebApp.initDataUnsafe.user) {
-            setUserData(WebApp.initDataUnsafe.user as UserData);
-        }
-    }, []);
-
 
     const handleBought = (): void => {
         console.log(phone, desc)
@@ -87,7 +78,6 @@ export default function Informations({ setInfoMenu }: Props) {
                         className='h-full flex-1 outline-none border-none' />
                     <Image width={10} height={10} src="/down.png" alt="Down" className='w-5 h-5 object-contain cursor-pointer' />
                 </div>
-                <p className='text-red font-bold text-2xl'>{userData?.username}</p>
                 <button
                     onClick={handleBought}
                     className='bg-[#01A3D4] w-full py-3 rounded text-white uppercase font-bold hover:bg-[#77b1ec]'>So&apos;rov yuborish!</button>
