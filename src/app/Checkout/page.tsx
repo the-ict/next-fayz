@@ -1,6 +1,6 @@
 "use client";
 
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import "./checkout.css";
 import { useDispatch, useSelector } from "react-redux";
 import { RootState } from "@/redux/store";
@@ -9,6 +9,7 @@ import { removeProduct } from "@/redux/actions/productSlice";
 import Informations from "@/components/Informations";
 import { ProductItem } from "@/lib/data";
 import Image from "next/image";
+import { usePathname } from "next/navigation";
 
 type ResultType = {
     totalPrice: number;
@@ -33,6 +34,12 @@ export default function Page() {
         },
         { totalPrice: 0, overNumber: 0 } as ResultType
     );
+
+    const pathname = usePathname()
+
+    useEffect(() => {
+        console.log(pathname)
+    }, [pathname])
 
 
 
