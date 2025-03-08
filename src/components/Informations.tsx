@@ -19,7 +19,7 @@ export default function Informations({ setInfoMenu }: Props) {
     const [isTelegram, setIsTelegarm] = useState<boolean>(false)
 
     useEffect(() => {
-        if (window.Telegram.WebApp.MainButton) {
+        if (typeof window !== "undefined" && window.Telegram && window.Telegram.WebApp) {
             setIsTelegarm(true)
         }
     }, [])
@@ -27,6 +27,10 @@ export default function Informations({ setInfoMenu }: Props) {
     useEffect(() => {
         if (isTelegram && phone && desc && name && last_name) {
             window.Telegram.WebApp.MainButton.show()
+            window.Telegram.WebApp.MainButton.setParams({
+                text: "Yuborish",
+                text_color: "#ffffff"
+            })
         }
     }, [phone, desc, name, last_name, isTelegram])
 
