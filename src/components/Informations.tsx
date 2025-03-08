@@ -8,13 +8,13 @@ import format from '@/lib/format'
 import Image from 'next/image'
 
 
-interface UserData {
-    id: number;
-    firstName?: string;
-    lastName?: string;
-    username?: string;
-    photo_url?: string;
-}
+// interface UserData {
+//     id: number;
+//     firstName?: string;
+//     lastName?: string;
+//     username?: string;
+//     photo_url?: string;
+// }
 
 type Props = {
     setInfoMenu: React.Dispatch<React.SetStateAction<boolean>>
