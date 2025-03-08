@@ -14,7 +14,7 @@ type Props = {
 export default function Informations({ setInfoMenu }: Props) {
     const [phone, setPhone] = useState<string>("+998")
     const [desc, setDesc] = useState<string>("")
-    const [username, setUsername] = useState<string | null>(null);
+    // const [username, setUsername] = useState<string | null>(null);
 
     const handleBought = (): void => {
         console.log(phone, desc)
