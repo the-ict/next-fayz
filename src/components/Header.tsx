@@ -1,6 +1,6 @@
 "use client"
 
-import React, { useEffect } from 'react'
+import React from 'react'
 import "react-responsive-carousel/lib/styles/carousel.min.css"
 import Search from './Search';
 import CategoryCard from "./CategoryCard"
