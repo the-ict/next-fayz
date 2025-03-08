@@ -7,19 +7,9 @@ import { removeProduct } from '@/redux/actions/productSlice'
 import format from '@/lib/format'
 import Image from 'next/image'
 
-
-// interface UserData {
-//     id: number;
-//     firstName?: string;
-//     lastName?: string;
-//     username?: string;
-//     photo_url?: string;
-// }
-
 type Props = {
     setInfoMenu: React.Dispatch<React.SetStateAction<boolean>>
 }
-
 
 export default function Informations({ setInfoMenu }: Props) {
     const [phone, setPhone] = useState<string>("+998")
@@ -27,7 +17,9 @@ export default function Informations({ setInfoMenu }: Props) {
     const [username, setUsername] = useState<string>("")
 
     useEffect(() => {
-        setUsername(window.Telegram.WebApp.initDataUnsafe.user?.username as string)
+        if (typeof window !== "undefined" && window.Telegram?.WebApp?.initDataUnsafe?.user) {
+            setUsername(window.Telegram.WebApp.initDataUnsafe.user.username || "")
+        }
     }, [])
 
     const handleBought = (): void => {
@@ -36,7 +28,6 @@ export default function Informations({ setInfoMenu }: Props) {
 
     const dispatch = useDispatch()
     const products = useSelector((store: RootState) => store.products)
-
 
     return (
         <div className='fixed top-0 left-0 w-screen h-screen bg-[rgba(0,0,0,0.5)] z-99 flex justify-center items-center'>
@@ -87,7 +78,8 @@ export default function Informations({ setInfoMenu }: Props) {
                     onClick={handleBought}
                     className='bg-[#01A3D4] w-full py-3 rounded text-white uppercase font-bold hover:bg-[#77b1ec]'>So&apos;rov yuborish!</button>
 
-                <button>{username}ddf</button>
+                {/* username ni chiqarish */}
+                <div>{username}</div>
             </form>
         </div>
     )
