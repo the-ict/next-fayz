@@ -1,7 +1,7 @@
 "use client"
 
 import { RootState } from '@/redux/store'
-import React, { useState } from 'react'
+import React, { useEffect, useState } from 'react'
 import { useSelector, useDispatch } from 'react-redux'
 import { removeProduct } from '@/redux/actions/productSlice'
 import format from '@/lib/format'
@@ -24,6 +24,11 @@ type Props = {
 export default function Informations({ setInfoMenu }: Props) {
     const [phone, setPhone] = useState<string>("+998")
     const [desc, setDesc] = useState<string>("")
+    const [username, setUsername] = useState<string>("")
+
+    useEffect(() => {
+        setUsername(window.Telegram.WebApp.initDataUnsafe.user?.username as string)
+    }, [])
 
     const handleBought = (): void => {
         console.log(phone, desc)
@@ -81,9 +86,8 @@ export default function Informations({ setInfoMenu }: Props) {
                 <button
                     onClick={handleBought}
                     className='bg-[#01A3D4] w-full py-3 rounded text-white uppercase font-bold hover:bg-[#77b1ec]'>So&apos;rov yuborish!</button>
-                <button
-                    onClick={(): void => { window.Telegram.WebApp.close() }}
-                    className='bg-[#db0d39] w-full py-3 rounded text-white uppercase font-bold hover:bg-[#77b1ec]'>Bekor qilish!</button>
+
+                <button>{username}</button>
             </form>
         </div>
     )
