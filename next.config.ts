@@ -10,8 +10,6 @@ const nextConfig: NextConfig = {
     // Qo'shimcha webpack konfiguratsiyalari kerak bo'lsa, bu yerga qo'shishingiz mumkin
     return config;
   },
-  reactStrictMode: true,
-  swcMinify: true
   // Qo'shimcha Next.js konfiguratsiyalari bu yerda bo'lishi mumkin
 };
 

@@ -30,6 +30,10 @@ export default function RootLayout({
     <html lang="en">
       <head>
         <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <Script
+          src="https://telegram.org/js/telegram-web-app.js"
+          strategy="beforeInteractive"
+        />
       </head>
       <body
         className={`${geistSans.variable} ${geistMono.variable} antialiased font-montserrat bg-[#F0E8E8]`}
@@ -41,11 +45,6 @@ export default function RootLayout({
           </div>
           <Footer />
         </ReduxProvider>
-
-        <Script
-          src="https://telegram.org/js/telegram-web-app.js"
-          strategy="afterInteractive"
-        />
       </body>
     </html>
   );
