@@ -25,38 +25,43 @@ export default function Informations({ setInfoMenu }: Props) {
     }, [])
 
     const handleBought = async () => {
-        if (window.Telegram.WebApp && window.Telegram.WebApp.isActive) {
-            const data: object = {
-                phone,
-                desc,
-                name,
-                last_name,
-                products: products.products
-            }
-            window.Telegram.WebApp.sendData(JSON.stringify(data))
-        } else {
-            try {
-                const response = await fetch('/api/send', {
-                    method: 'POST',
-                    headers: { 'Content-Type': 'application/json' },
-                    body: JSON.stringify({ phone, desc, subject: "Sotib olish", name, last_name }),
-                });
+        if (typeof window !== "undefined" && window.Telegram && window.Telegram.WebApp) {
+            if (window.Telegram.WebApp.isActive) {
+                // WebAppda bo'lsa, ma'lumotni yuborish
+                const data: object = {
+                    phone,
+                    desc,
+                    name,
+                    last_name,
+                    products: products.products
+                };
+                window.Telegram.WebApp.sendData(JSON.stringify(data));
+            } else {
+                // WebAppda bo'lmasa, backendga yuborish
+                try {
+                    const response = await fetch('/api/send', {
+                        method: 'POST',
+                        headers: { 'Content-Type': 'application/json' },
+                        body: JSON.stringify({ phone, desc, subject: "Sotib olish", name, last_name }),
+                    });
 
-                const data = await response.json();
+                    const data = await response.json();
 
-                if (response.ok) {
-                    console.log("Email muvaffaqiyatli yuborildi:", data);
-                    setPhone("+998")
-                    setDesc("")
-                    toast("Xabaringiz muvaffaqiyatli yuborildi")
-                } else {
-                    toast("Xatolik yuz ber!")
+                    if (response.ok) {
+                        console.log("Email muvaffaqiyatli yuborildi:", data);
+                        setPhone("+998");
+                        setDesc("");
+                        toast("Xabaringiz muvaffaqiyatli yuborildi");
+                    } else {
+                        toast("Xatolik yuz ber!");
+                    }
+                } catch (error) {
+                    console.error("Server xatosi:", error);
                 }
-            } catch (error) {
-                console.error("Server xatosi:", error);
             }
         }
-    }
+    };
+
 
     const dispatch = useDispatch()
     const products = useSelector((store: RootState) => store.products)
