@@ -8,14 +8,9 @@ import { Carousel } from 'react-responsive-carousel';
 import Image from 'next/image';
 
 
-const tg = (window as unknown as { Telegram: { WebApp: any } }).Telegram.WebApp;
-
 
 export default function Header() {
 
-    useEffect(() => {
-        tg.ready()
-    }, [])
 
     return (
         <div className='mt-10 h-min-[calc(100vh-50vh)]'>

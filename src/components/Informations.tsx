@@ -1,15 +1,17 @@
+"use client"
+
 import { RootState } from '@/redux/store'
 import React, { useState } from 'react'
 import { useSelector, useDispatch } from 'react-redux'
 import { removeProduct } from '@/redux/actions/productSlice'
 import format from '@/lib/format'
 import Image from 'next/image'
+import WebApp from "@twa-dev/sdk"
 
 type Props = {
     setInfoMenu: React.Dispatch<React.SetStateAction<boolean>>
 }
 
-const tg = (window as unknown as { Telegram: { WebApp: any } }).Telegram.WebApp;
 
 export default function Informations({ setInfoMenu }: Props) {
     const [phone, setPhone] = useState<string>("+998")
@@ -71,7 +73,7 @@ export default function Informations({ setInfoMenu }: Props) {
                         className='h-full flex-1 outline-none border-none' />
                     <Image width={10} height={10} src="/down.png" alt="Down" className='w-5 h-5 object-contain cursor-pointer' />
                 </div>
-                <span className='text-red-700'>{tg?.initDataUnsafe?.username}</span>
+                <span>{WebApp.initDataUnsafe.user?.username}</span>
                 <button
                     onClick={handleBought}
                     className='bg-[#01A3D4] w-full py-3 rounded text-white uppercase font-bold hover:bg-[#77b1ec]'>So&apos;rov yuborish!</button>
