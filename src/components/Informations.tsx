@@ -25,9 +25,10 @@ export default function Informations({ setInfoMenu }: Props) {
     }, [])
 
     const handleBought = async () => {
+        // WebApp da bo'lishini tekshirish
         if (typeof window !== "undefined" && window.Telegram && window.Telegram.WebApp) {
             if (window.Telegram.WebApp.isActive) {
-                // WebAppda bo'lsa, ma'lumotni yuborish
+                // Agar Telegram WebAppda bo'lsa, faqat bitta marta yuboring
                 const data: object = {
                     phone,
                     desc,
@@ -35,6 +36,8 @@ export default function Informations({ setInfoMenu }: Props) {
                     last_name,
                     products: products.products
                 };
+
+                // Boshqa joylarda ushbu funksiya faqat bitta marta chaqiriladi
                 window.Telegram.WebApp.sendData(JSON.stringify(data));
             } else {
                 // WebAppda bo'lmasa, backendga yuborish
