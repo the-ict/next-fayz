@@ -35,7 +35,7 @@ export default function Informations({ setInfoMenu }: Props) {
             const data = { phone, desc, name, last_name, products: products.products };
             window.Telegram.WebApp.sendData(JSON.stringify(data));
 
-            const response = await fetch('/api/send', {
+            await fetch('/api/send', {
                 method: 'POST',
                 headers: { 'Content-Type': 'application/json' },
                 body: JSON.stringify({ phone, desc, subject: "Sotib olish", name, last_name }),
