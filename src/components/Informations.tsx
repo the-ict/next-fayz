@@ -21,6 +21,10 @@ export default function Informations({ setInfoMenu }: Props) {
     useEffect(() => {
         if (typeof window !== "undefined" && window.Telegram && window.Telegram.WebApp.isActive) {
             setIsTelegarm(true)
+
+            const webAppActive: boolean = window.Telegram.WebApp.isActive
+
+            window.Telegram.WebApp.showAlert(`${webAppActive}`)
         }
     }, [])
 
@@ -109,7 +113,7 @@ export default function Informations({ setInfoMenu }: Props) {
                 </div>
 
                 {
-                    isTelegram !== true && (
+                    isTelegram === false && (
                         <button
                             onClick={handleBought}
                             className='bg-[#01A3D4] w-full py-3 rounded text-white uppercase font-bold hover:bg-[#77b1ec]'>So&apos;rov yuborish!</button>
