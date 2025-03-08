@@ -6,7 +6,6 @@ import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
 import ReduxProvider from "@/redux/reduxProvider";
 import Script from "next/script";
-import { metadata } from "./metadata"; // metadata import
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
