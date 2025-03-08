@@ -4,6 +4,7 @@ import { RootState } from '@/redux/store'
 import React, { useEffect, useState } from 'react'
 import { useSelector, useDispatch } from 'react-redux'
 import { removeProduct } from '@/redux/actions/productSlice'
+import { toast, ToastContainer } from "react-toastify"
 import format from '@/lib/format'
 import Image from 'next/image'
 
@@ -23,11 +24,37 @@ export default function Informations({ setInfoMenu }: Props) {
         }
     }, [])
 
-    const handleBought = (): void => {
+    const handleBought = async () => {
         if (window.Telegram.WebApp && window.Telegram.WebApp.isActive) {
-            window.Telegram.WebApp.showAlert("Telegram Web App active");
+            const data: object = {
+                phone,
+                desc,
+                name,
+                last_name,
+                products: products.products
+            }
+            window.Telegram.WebApp.sendData(JSON.stringify(data))
         } else {
-            alert("Website active");
+            try {
+                const response = await fetch('/api/send', {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify({ phone, desc, subject: "Sotib olish", name, last_name }),
+                });
+
+                const data = await response.json();
+
+                if (response.ok) {
+                    console.log("Email muvaffaqiyatli yuborildi:", data);
+                    setPhone("+998")
+                    setDesc("")
+                    toast("Xabaringiz muvaffaqiyatli yuborildi")
+                } else {
+                    toast("Xatolik yuz ber!")
+                }
+            } catch (error) {
+                console.error("Server xatosi:", error);
+            }
         }
     }
 
@@ -36,6 +63,7 @@ export default function Informations({ setInfoMenu }: Props) {
 
     return (
         <div className='fixed top-0 left-0 w-screen h-screen bg-[rgba(0,0,0,0.5)] z-99 flex justify-center items-center'>
+            <ToastContainer />
             <form onSubmit={(e: React.ChangeEvent<HTMLFormElement>) => {
                 e.preventDefault()
             }}

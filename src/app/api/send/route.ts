@@ -5,7 +5,7 @@ const resend = new Resend(process.env.RESEND_API_KEY);
 
 export async function POST(req: Request) {
     try {
-        const { phone, desc, subject } = await req.json();
+        const { phone, desc, subject, name, last_name } = await req.json();
 
         if (!phone || !desc) {
             return new Response(JSON.stringify({ error: 'Phone number and description are required' }), {
@@ -17,7 +17,7 @@ export async function POST(req: Request) {
             from: 'Support <onboarding@resend.dev>',
             to: ['davlatjonsoqqamode@gmail.com'], // Bu yerni o'zgartiring
             subject: subject,
-            react: EmailTemplate({ phone, desc }),
+            react: EmailTemplate({ phone, desc, name, last_name }),
         });
 
         if (error) {
