@@ -21,9 +21,14 @@ export default function Informations({ setInfoMenu }: Props) {
     useEffect(() => {
         if (window.Telegram.WebApp.MainButton) {
             setIsTelegarm(true)
-            window.Telegram.WebApp.MainButton.show()
         }
     }, [])
+
+    useEffect(() => {
+        if (isTelegram && phone && desc && name && last_name) {
+            window.Telegram.WebApp.MainButton.show()
+        }
+    }, [phone, desc, name, last_name, isTelegram])
 
     const handleBought = (): void => {
         console.log(phone, desc)
@@ -40,7 +45,10 @@ export default function Informations({ setInfoMenu }: Props) {
                 className='p-10 rounded bg-[#fdfdfd]  relative shadow-2xl w-max h-max'
             >
                 <Image src="/x.png"
-                    onClick={() => setInfoMenu(false)}
+                    onClick={() => {
+                        setInfoMenu(false)
+                        window.Telegram.WebApp.MainButton.hide()
+                    }}
                     className='absolute right-2 top-2 cursor-pointer object-contain' width={16} height={16} alt="" />
                 {
                     products.products.map(item => {
@@ -97,7 +105,7 @@ export default function Informations({ setInfoMenu }: Props) {
                 </div>
 
                 {
-                    !isTelegram && (
+                    isTelegram !== true && (
                         <button
                             onClick={handleBought}
                             className='bg-[#01A3D4] w-full py-3 rounded text-white uppercase font-bold hover:bg-[#77b1ec]'>So&apos;rov yuborish!</button>
