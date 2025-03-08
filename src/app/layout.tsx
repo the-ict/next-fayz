@@ -1,3 +1,5 @@
+"use client";
+import { useEffect, useState } from "react";
 import Script from "next/script";
 import { Geist, Geist_Mono } from "next/font/google";
 import Navbar from "@/components/Navbar";
@@ -26,6 +28,17 @@ export default function RootLayout({
 }: Readonly<{
   children: React.ReactNode;
 }>) {
+  const [bgColor, setBgColor] = useState<string>("#F0E8E8");
+  const [textColor, setTextColor] = useState<string>("#000");
+
+  useEffect(() => {
+    if (typeof window !== "undefined" && window.Telegram?.WebApp?.themeParams) {
+      const { bg_color, text_color } = window.Telegram.WebApp.themeParams;
+      setBgColor(bg_color || "#F0E8E8");
+      setTextColor(text_color || "#000");
+    }
+  }, []);
+
   return (
     <html lang="en">
       <head>
@@ -36,10 +49,10 @@ export default function RootLayout({
         />
       </head>
       <body
-        className={`${geistSans.variable} ${geistMono.variable} antialiased font-montserrat bg-[#F0E8E8]`}
+        className={`${geistSans.variable} ${geistMono.variable} antialiased font-montserrat`}
         style={{
-          backgroundColor: window.Telegram.WebApp.themeParams.bg_color,
-          color: window.Telegram.WebApp.themeParams.text_color
+          backgroundColor: bgColor,
+          color: textColor,
         }}
       >
         <ReduxProvider>
