@@ -7,13 +7,16 @@ import { removeProduct } from '@/redux/actions/productSlice';
 import { toast, ToastContainer } from "react-toastify";
 import format from '@/lib/format';
 import Image from 'next/image';
-import WebApp from '@twa-dev/sdk';
+
 
 type Props = {
     setInfoMenu: React.Dispatch<React.SetStateAction<boolean>>;
+    isWebApp: "false" | "true"
 };
 
-export default function Informations({ setInfoMenu }: Props) {
+const WebApp = window.Telegram.WebApp
+
+export default function Informations({ setInfoMenu, isWebApp }: Props) {
     const [phone, setPhone] = useState<string>("+998");
     const [desc, setDesc] = useState<string>("");
     const [name, setName] = useState<string>("");
@@ -27,8 +30,7 @@ export default function Informations({ setInfoMenu }: Props) {
     }, []);
 
     const handleBought = async () => {
-        if (WebApp.isActive) {
-            WebApp.showAlert("Something like thiss!")
+        if (isWebApp === "true") {
             const data: object = {
                 phone,
                 desc,
@@ -39,8 +41,7 @@ export default function Informations({ setInfoMenu }: Props) {
 
             window.Telegram.WebApp.sendData(JSON.stringify(data));
 
-        } else if (!WebApp.isActive) {
-            alert("Something like thiss website!")
+        } else if (isWebApp === "false") {
             try {
                 const response = await fetch('/api/send', {
                     method: 'POST',

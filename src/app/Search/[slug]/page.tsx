@@ -16,7 +16,7 @@ export default function Page() {
     }, [pathname])
 
     return (
-        <div className='min-h-[50vh] '>
+        <div className='min-h-[50vh]'>
             <Search />
             <div className='flex flex-wrap gap-2 mt-10'>
                 {

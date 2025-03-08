@@ -9,7 +9,7 @@ import { removeProduct } from "@/redux/actions/productSlice";
 import Informations from "@/components/Informations";
 import { ProductItem } from "@/lib/data";
 import Image from "next/image";
-import { usePathname } from "next/navigation";
+import { usePathname, useSearchParams } from "next/navigation";
 
 type ResultType = {
     totalPrice: number;
@@ -25,6 +25,7 @@ export default function Page() {
     const [infoMenu, setInfoMenu] = useState<boolean>(false);
     const dispatch = useDispatch();
     const products = useSelector((store: RootState) => store.products);
+    const [isWebApp, setIsWebApp] = useState<"true" | "false">("false")
 
     const result: ResultType = products.products.reduce(
         (acc, product) => {
@@ -36,16 +37,23 @@ export default function Page() {
     );
 
     const pathname = usePathname()
+    const searchParams = useSearchParams()
 
     useEffect(() => {
-        console.log(pathname)
-    }, [pathname])
-
+        if (typeof window !== "undefined") {
+            const webApp = searchParams?.get("web_app")
+            if (webApp) {
+                setIsWebApp(webApp as "true" | "false")
+            } else {
+                window.location.replace("/Checkout/?web_app=false")
+            }
+        }
+    }, [pathname, searchParams])
 
 
     return (
         <div className="min-h-[50vh] mt-10" >
-            {infoMenu && <Informations setInfoMenu={setInfoMenu} />}
+            {infoMenu && <Informations setInfoMenu={setInfoMenu} isWebApp={isWebApp} />}
 
             <div className="checkout">
                 <div className="checkout-content">
