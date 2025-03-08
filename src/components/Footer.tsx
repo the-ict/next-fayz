@@ -14,10 +14,10 @@ export default function Footer() {
                 </div>
             </div>
             <ul>
-                <li className='cursor-pointer  mt-3 font-bold m8-sm:text-[8px]'>Biz haqimizda</li>
-                <li className='cursor-pointer  mt-3 font-bold max-sm:text-[10px]'>Do'kon manzillari</li>
-                <li className='cursor-pointer  mt-3 font-bold max-sm:text-[10px]'>Yangiliklar</li>
-                <li className='cursor-pointer  mt-3 font-bold max-sm:text-[10px]'>Bog'lanish</li>
+                <li className='cursor-pointer  mt-3 font-bold m8-sm:text-[8px] hover:underline'>Biz haqimizda</li>
+                <li className='cursor-pointer  mt-3 font-bold max-sm:text-[10px] hover:underline'>Do'kon manzillari</li>
+                <li className='cursor-pointer  mt-3 font-bold max-sm:text-[10px] hover:underline'>Yangiliklar</li>
+                <li className='cursor-pointer  mt-3 font-bold max-sm:text-[10px] hover:underline'>Bog'lanish</li>
             </ul>
             <div>
                 <div className='flex items-center gap-4 max-sm:gap-2'>
