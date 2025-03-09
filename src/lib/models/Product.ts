@@ -4,35 +4,34 @@ export interface IProduct extends Document {
     name: string;
     description?: string;
     properties: object;
-    price: number,
-    image: string[],
-    categories: []
+    price: number;
+    image: string[];
+    categories: string[];
 }
-
 
 const productSchema = new Schema<IProduct>({
     name: {
         type: String,
-        require: true,
+        required: true,
     },
     description: {
         type: String,
     },
     properties: {
         type: Object,
-        require: true
+        required: true,
     },
     price: {
         type: Number,
-        require: true
+        required: true,
     },
     categories: {
-        type: Array,
-        require: true
+        type: [String],
+        required: true,
     },
     image: {
-        type: Array,
-        require: true
+        type: [String],
+        required: true,
     }
 }, { timestamps: true })
 
