@@ -27,7 +27,7 @@ export default function Map() {
 
   return (
     <div className="flex items-start mt-10 max-sm:flex-col">
-      <div className="flex flex-col gap-2 max-sm:w-full">
+      <div className="flex flex-col gap-2 max-sm:w-full py-2">
         {[
           {
             position: [40.578900959470324, 70.91519190427414],
@@ -40,7 +40,7 @@ export default function Map() {
         ].map((_, i) => (
           <div
             key={i}
-            className={`flex-1 flex flex-col gap-3 ${position[0] === _.position[0] ? "bg-gray-300" : "bg-[#fdfdfd]"} p-5 hover:bg-gray-300 transition-all rounded cursor-pointer`}
+            className={`flex-1 flex flex-col gap-3 ${position[0] === _.position[0] ? "bg-gray-200 dark:bg-gray-200" : "bg-[#fdfdfd]"} p-5 hover:bg-gray-500 dark:hover:bg-gray-300 transition-all rounded cursor-pointer dark:text-black`}
             onClick={(): void => handlePosition(_.position as [number, number])}
           >
             <div className="flex items-center gap-1">
@@ -71,7 +71,7 @@ export default function Map() {
           </Marker>
         </MapContainer>
       </div>
-    </div>
+    </div >
   );
 }
 

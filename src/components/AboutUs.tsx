@@ -17,7 +17,7 @@ export default function AboutUs() {
                         sizes="(max-width: 640px) 100vw, 50vw"
                     />
                 </div>
-                <p className='w-1/2 max-sm:w-full max-sm:text-[18px] max-sm:text-left max-sm:px-5 text-[20px] font-bold text-gray-800 tracking-tighter font-montserrat'>
+                <p className='w-1/2 max-sm:w-full max-sm:text-[18px] max-sm:text-left max-sm:px-5 text-[20px] font-bold text-gray-800 tracking-tighter font-montserrat dark:text-gray-200'>
                     FAYZ - muddatli to‘lovga maishiy texnika, elektronika va uy jihozlarini xarid qilish imkoniyatini taqdim etuvchi O'zbekistondagi eng yirik savdo do'konlar tarmog'i. Tarmoqning ilk do‘koni 2010-yilda Farg‘ona viloyatida o‘z faoliyatini boshladi. Hozirda respublika bo‘ylab 120 dan ortiq do‘kon aholiga sifatli xizmat ko‘rsatib kelmoqda.
                 </p>
             </div>

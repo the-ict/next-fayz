@@ -40,7 +40,7 @@ export default function Page() {
             {infoMenu && <Informations setInfoMenu={setInfoMenu} toast={toast} />}
             <ToastContainer />
 
-            <div className="checkout">
+            <div className="checkout ">
                 <div className="checkout-content">
                     <div className="checkout-details">
                         <div className="checkout-details__arrow">
@@ -54,7 +54,7 @@ export default function Page() {
 
                         <div className="checkout-details__items">
                             {products.products.map((item: ProductItem) => (
-                                <div className="checkout-details__item" key={item.id}>
+                                <div className="checkout-details__item dark:text-black" key={item.id}>
                                     <Image src="/product1.png" alt="Book img" width={100} height={100} />
                                     <b className="checkout-item__title line-clamp-2">{item.name}</b>
                                     <span style={{ fontWeight: "bolder" }}>{item.overNumber}</span>
@@ -71,7 +71,7 @@ export default function Page() {
                         </div>
                     </div>
 
-                    <div className="checkout-payment">
+                    <div className="checkout-payment dark:text-black">
                         <h3>Buyurtma xulosasi</h3>
                         <div>
                             <b>Soni:</b>

@@ -66,7 +66,7 @@ export default function Informations({ setInfoMenu, toast }: Props) {
     const products = useSelector((store: RootState) => store.products);
 
     return (
-        <div className='fixed inset-0 bg-black/50 flex justify-center items-center z-50'>
+        <div className='fixed inset-0 bg-black/50 flex justify-center items-center z-50 dark:text-black'>
             <Card className='p-10 rounded-lg z-20 shadow-2xl w-[90%] max-w-lg bg-white relative'>
                 <Image src="/x.png" onClick={() => setInfoMenu(false)} className='absolute right-2 top-2 cursor-pointer' width={16} height={16} alt="Close" />
                 {

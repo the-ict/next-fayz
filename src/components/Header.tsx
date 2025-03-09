@@ -42,21 +42,21 @@ export default function Header() {
 
             {/* Info Cards */}
             <div className="flex items-center gap-2 mt-10 max-sm:flex-col">
-                <div className="flex-1 max-sm:w-full flex items-center p-4 flex-col gap-2 bg-[#FDFDFD] hover:shadow-2xl transition-all animation-block">
+                <div className="flex-1 max-sm:w-full flex items-center p-4 flex-col gap-2 bg-[#FDFDFD] hover:shadow-2xl transition-all animation-block dark:hover:scale-105 dark:bg-gray-200">
                     <Image src="/location.png" alt="Location" width={37} height={37} />
-                    <p className="text-[14px]">
+                    <p className="text-[14px] dark:text-black ">
                         <b>3 - </b> ta do'kon
                     </p>
                 </div>
-                <div className="flex-1 flex max-sm:w-full items-center p-4 flex-col gap-2 bg-[#FDFDFD] hover:shadow-2xl transition-all animation-block">
+                <div className="flex-1 flex max-sm:w-full items-center p-4 flex-col gap-2 bg-[#FDFDFD] hover:shadow-2xl transition-all animation-block dark:hover:scale-105 dark:bg-gray-200">
                     <Image src="/magazine.png" alt="Magazine" width={37} height={37} />
-                    <p className="text-[14px]">
+                    <p className="text-[14px] dark:text-black ">
                         <b>6000 - </b> dan ortiq muddatli to‘lov asosida mahsulotlar
                     </p>
                 </div>
-                <div className="flex-1 flex max-sm:w-full items-center p-4 flex-col gap-2 bg-[#FDFDFD] hover:shadow-2xl transition-all animation-block">
+                <div className="flex-1 flex max-sm:w-full items-center p-4 flex-col gap-2 bg-[#FDFDFD] hover:shadow-2xl transition-all animation-block dark:hover:scale-105 dark:bg-gray-200">
                     <Image src="/percent.png" alt="Percent" width={37} height={37} />
-                    <p className="text-[14px]">
+                    <p className="text-[14px] dark:text-black ">
                         <b>3oygacha foizsiz - </b> Muddatli to’lov
                     </p>
                 </div>
