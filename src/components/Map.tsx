@@ -11,10 +11,10 @@ const MapContainer = dynamic(() => import("react-leaflet").then((mod) => mod.Map
 const TileLayer = dynamic(() => import("react-leaflet").then((mod) => mod.TileLayer), { ssr: false });
 const Marker = dynamic(() => import("react-leaflet").then((mod) => mod.Marker), { ssr: false });
 
-interface mapInfo {
-  position: [number, number],
-  name: string
-}
+// interface mapInfo {
+//   position: [number, number],
+//   name: string
+// }
 
 export default function Map() {
   const [position, setPosition] = useState<[number, number]>([40.578900959470324, 70.91519190427414])

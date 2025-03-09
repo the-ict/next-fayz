@@ -1,4 +1,4 @@
-import { NextResponse, NextRequest } from "next/server"
+import { NextResponse } from "next/server"
 import connect from "@/lib/database/connect"
 import Product, { IProduct } from "@/lib/models/Product"
 
@@ -25,7 +25,8 @@ export async function GET(req: Request) {
 
     } catch (error) {
         return NextResponse.json({
-            message: "Internal server error"
+            message: "Internal server error",
+            error
         }, {
             status: 500,
         })
@@ -83,7 +84,7 @@ export async function PUT(req: Request) {
 
         return NextResponse.json({ message: 'Product updated successfully', product: updatedProduct }, { status: 201 });
     } catch (error) {
-        return NextResponse.json({ error: 'Error updating product' }, { status: 500 });
+        return NextResponse.json({ error: error }, { status: 500 });
     }
 }
 
@@ -101,7 +102,8 @@ export async function DELETE(req: Request) {
         return NextResponse.json({ message: 'Product deleted successfully' }, { status: 200 });
     } catch (error) {
         return NextResponse.json({
-            message: "Internal server error"
+            message: "Internal server error",
+            error
         }, {
             status: 500,
         })

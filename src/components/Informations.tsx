@@ -23,7 +23,6 @@ export default function Informations({ setInfoMenu }: Props) {
     const [desc, setDesc] = useState<string>("");
     const [name, setName] = useState<string>("");
     const [last_name, setLastName] = useState<string>("");
-    const [loading, setLoading] = useState<boolean>(false)
     const [isActiveButton, setIsActiveButton] = useState<boolean>(false)
 
     useEffect(() => {
@@ -41,7 +40,6 @@ export default function Informations({ setInfoMenu }: Props) {
     }, [phone, desc, name, last_name])
 
     const handleBought = async () => {
-        setLoading(true)
         try {
             const data = { phone, desc, name, last_name, products: products.products };
             window.Telegram.WebApp.sendData(JSON.stringify(data));
@@ -56,9 +54,7 @@ export default function Informations({ setInfoMenu }: Props) {
             setPhone("+998");
             setDesc("");
             setInfoMenu(false);
-            setLoading(false)
         } catch (error) {
-            setLoading(false)
             toast("Server bilan bog'lanishda xatolik yuz berdi!");
         }
     };

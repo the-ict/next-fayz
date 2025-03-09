@@ -53,7 +53,7 @@ export async function PUT(req: Request) {
 }
 
 
-export async function GET(req: Request) {
+export async function GET() {
     try {
         const allDiscount = await Discount.find()
 
