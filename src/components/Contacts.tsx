@@ -4,7 +4,7 @@ import React, { useState } from 'react'
 import { ToastContainer, toast } from 'react-toastify';
 
 export default function Contacts() {
-    const [phone, setPhone] = useState<string>("+998")
+    const [phone, setPhone] = useState<number>(998)
     const [desc, setDesc] = useState<string>("")
     const [buttonState, setButtonState] = useState<boolean>(false)
 
@@ -27,7 +27,7 @@ export default function Contacts() {
 
             if (response.ok) {
                 console.log("Email muvaffaqiyatli yuborildi:", data);
-                setPhone("+998")
+                setPhone(998)
                 setDesc("")
                 toast("Xabaringiz muvaffaqiyatli yuborildi")
                 setButtonState(false)
@@ -47,7 +47,7 @@ export default function Contacts() {
             <ToastContainer />
             <form className="flex flex-col gap-4 mt-3 w-[400px] max-sm:w-full " onSubmit={(e) => e.preventDefault()}>
                 <input value={phone} onChange={(e: React.ChangeEvent<HTMLInputElement>) => {
-                    setPhone(e.target.value)
+                    setPhone(Number(e.target.value))
                 }} type="number" placeholder='Telefon raqam...' className='bg-[#AB9898] dark:bg-[#fff] dark:text-black py-3 px-2 rounded text-white outline-none' />
                 <textarea
                     value={desc}
