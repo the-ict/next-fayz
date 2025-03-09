@@ -9,6 +9,7 @@ import { removeProduct } from "@/redux/actions/productSlice";
 import Informations from "@/components/Informations";
 import { ProductItem } from "@/lib/data";
 import Image from "next/image";
+import { toast, ToastContainer } from "react-toastify"
 
 type ResultType = {
     totalPrice: number;
@@ -36,7 +37,8 @@ export default function Page() {
 
     return (
         <div className="min-h-[50vh] mt-10" >
-            {infoMenu && <Informations setInfoMenu={setInfoMenu} />}
+            {infoMenu && <Informations setInfoMenu={setInfoMenu} toast={toast} />}
+            <ToastContainer />
 
             <div className="checkout">
                 <div className="checkout-content">

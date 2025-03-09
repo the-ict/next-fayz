@@ -1,4 +1,3 @@
-import Script from "next/script";
 import Navbar from "@/components/Navbar";
 import type { Metadata } from "next";
 import "./globals.css";
@@ -19,14 +18,7 @@ export default function RootLayout({
     <html lang="en">
       <head>
         <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-        {
-          typeof window !== "undefined" && (
-            <Script
-              src="https://telegram.org/js/telegram-web-app.js"
-              strategy="beforeInteractive"
-            />
-          )
-        }
+        
       </head>
       <body
         className={`font-montserrat bg-[#F0E8E8]`}>

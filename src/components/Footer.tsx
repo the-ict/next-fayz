@@ -7,6 +7,7 @@ import { faInstagram, faFacebook, faTiktok, faTelegram } from "@fortawesome/free
 import { faEnvelope, faPhone } from "@fortawesome/free-solid-svg-icons"
 import Link from "next/link"
 
+
 export default function Footer() {
     return (
         <div className='mt-10 bg-[#000000] text-white flex items-center justify-between max-sm:justify-around px-10 py-10 max-sm:px-0 max-sm:py-5 max-lg:p-10'>

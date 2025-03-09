@@ -16,7 +16,7 @@ export default function Navbar() {
 
 
   return (
-    <div className="h-[60px] bg-[#fdfdfd] flex justify-center sticky top-0 z-[10] shadow px-10">
+    <div className="h-[60px] bg-[#fdfdfd] flex justify-center sticky top-0 z-[10] shadow px-5">
       <div className="max-w-[1124px] h-full flex items-center w-full justify-between">
         {menuActive && (
           <div
