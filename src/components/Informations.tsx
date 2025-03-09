@@ -19,10 +19,12 @@ type Props = {
 const WebApp = window.Telegram.WebApp;
 
 export default function Informations({ setInfoMenu }: Props) {
-    const [phone, setPhone] = useState<string>("+998");
+    const [phone, setPhone] = useState<string>("998");
     const [desc, setDesc] = useState<string>("");
     const [name, setName] = useState<string>("");
     const [last_name, setLastName] = useState<string>("");
+    const [loading, setLoading] = useState<boolean>(false)
+    const [isActiveButton, setIsActiveButton] = useState<boolean>(false)
 
     useEffect(() => {
         if (WebApp.isActive) {
@@ -30,7 +32,16 @@ export default function Informations({ setInfoMenu }: Props) {
         }
     }, []);
 
+    useEffect(() => {
+        if (phone && desc && name && last_name) {
+            setIsActiveButton(true)
+        } else {
+            setIsActiveButton(false)
+        }
+    }, [phone, desc, name, last_name])
+
     const handleBought = async () => {
+        setLoading(true)
         try {
             const data = { phone, desc, name, last_name, products: products.products };
             window.Telegram.WebApp.sendData(JSON.stringify(data));
@@ -45,11 +56,13 @@ export default function Informations({ setInfoMenu }: Props) {
             setPhone("+998");
             setDesc("");
             setInfoMenu(false);
+            setLoading(false)
         } catch (error) {
-            console.error("Server xatosi:", error);
+            setLoading(false)
             toast("Server bilan bog'lanishda xatolik yuz berdi!");
         }
     };
+
 
     const dispatch = useDispatch();
     const products = useSelector((store: RootState) => store.products);
@@ -70,11 +83,15 @@ export default function Informations({ setInfoMenu }: Props) {
                         </div>
                     ))
                 }
-                <Input value={phone} type="text" placeholder='91 111 11 11' onChange={(e) => setPhone(e.target.value)} className='mb-3' />
-                <Input value={name} type="text" placeholder='Ismingiz' onChange={(e) => setName(e.target.value)} className='mb-3' />
-                <Input value={last_name} type="text" placeholder='Familiyangiz' onChange={(e) => setLastName(e.target.value)} className='mb-3' />
-                <Input value={desc} type="text" placeholder='Izoh qoldiring' onChange={(e) => setDesc(e.target.value)} className='mb-3' />
-                <Button onClick={handleBought} className='w-full bg-blue-500 hover:bg-blue-600 text-white font-bold'>So‘rov yuborish!</Button>
+                <Input value={phone} type="number" placeholder='91 111 11 11' onChange={(e: React.ChangeEvent<HTMLInputElement>) => setPhone(e.target.value)} className='mb-3' />
+                <Input value={name} type="name" placeholder='Ismingiz' onChange={(e: React.ChangeEvent<HTMLInputElement>) => setName(e.target.value)} className='mb-3' />
+                <Input value={last_name} type="famile" placeholder='Familiyangiz' onChange={(e: React.ChangeEvent<HTMLInputElement>) => setLastName(e.target.value)} className='mb-3' />
+                <Input value={desc} type="comment" placeholder='Izoh qoldiring' onChange={(e: React.ChangeEvent<HTMLInputElement>) => setDesc(e.target.value)} className='mb-3' />
+                {
+                    isActiveButton && (
+                        <Button onClick={handleBought} className='w-full bg-blue-500 hover:bg-blue-600 text-white font-bold'>So‘rov yuborish!</Button>
+                    )
+                }
             </Card>
         </div>
     );

@@ -38,3 +38,27 @@ export const products: ProductItem[] = [
         id: 3
     },
 ];
+
+
+export const categories: string[] = [
+    "Kirmoshina",
+    "Telefon",
+    "Noutbuk",
+    "Televizor",
+    "Maishiy texnika",
+    "Smart soatlar",
+    "Aksesuarlar",
+    "Audio va video",
+    "Konditsionerlar",
+    "Muzlatgichlar",
+    "Kir yuvish mashinalari",
+    "Mebel",
+    "Oshxona anjomlari",
+    "Sport anjomlari",
+    "Avtomobil ehtiyot qismlari",
+    "Bolalar o‘yinchoqlari",
+    "Kitoblar",
+    "Dasturiy ta'minot",
+    "Ofis jihozlari",
+    "Gamer anjomlari"
+];
