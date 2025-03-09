@@ -54,8 +54,9 @@ export default function Informations({ setInfoMenu }: Props) {
             setPhone("+998");
             setDesc("");
             setInfoMenu(false);
-        } catch (error) {
-            toast("Server bilan bog'lanishda xatolik yuz berdi!");
+        } catch (err) {
+            console.log(err)
+            toast("Xatolik yuz berdi!")
         }
     };
 
