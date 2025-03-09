@@ -55,21 +55,21 @@ export default function Navbar() {
                       Biz haqimizda
                     </li>
                   </Link>
-                  <Link href={"/Markets"}>
+                  <Link href={"/user/Markets"}>
                     <li
-                      className={`${pathname === "/Markets" && "text-[#01A3D4]"}`}
+                      className={`${pathname === "/user/Markets" && "text-[#01A3D4]"}`}
                     >
                       Do&apos;konlar
                     </li>
                   </Link>
-                  <Link href={"/News"}>
-                    <li className={`${pathname === "/News" && "text-[#01A3D4]"}`}>
+                  <Link href={"/user/News"}>
+                    <li className={`${pathname === "/user/News" && "text-[#01A3D4]"}`}>
                       Yangiliklar
                     </li>
                   </Link>
-                  <Link href={"/Contacts"}>
+                  <Link href={"/user/Contacts"}>
                     <li
-                      className={`${pathname === "/Contacts" && "text-[#01A3D4]"}`}
+                      className={`${pathname === "/user/Contacts" && "text-[#01A3D4]"}`}
                     >
                       Aloqa
                     </li>
@@ -77,7 +77,7 @@ export default function Navbar() {
                 </ul>
               </div>
               <button className="bg-blue-600 p-2 text-white font-bold rounded outline-none border-none">
-                <Link href="/Contacts">
+                <Link href="/user/Contacts">
                   Bo&apos;g&apos;lanish
                 </Link>
               </button>
@@ -129,23 +129,23 @@ export default function Navbar() {
                 Biz haqimizda
               </li>
             </Link>
-            <Link href={"/Markets"}>
+            <Link href={"/user/Markets"}>
               <li
-                className={`cursor-pointer font-semibold text-[14px] ${pathname === "/Markets" && "text-[#01A3D4]"}`}
+                className={`cursor-pointer font-semibold text-[14px] ${pathname === "/user/Markets" && "text-[#01A3D4]"}`}
               >
                 Do&apos;konlar
               </li>
             </Link>
-            <Link href={"/News"}>
+            <Link href={"/user/News"}>
               <li
-                className={`cursor-pointer font-semibold text-[14px] ${pathname === "/News" && "text-[#01A3D4]"}`}
+                className={`cursor-pointer font-semibold text-[14px] ${pathname === "/user/News" && "text-[#01A3D4]"}`}
               >
                 Yangiliklar
               </li>
             </Link>
-            <Link href={"/Contacts"}>
+            <Link href={"/user/Contacts"}>
               <li
-                className={`cursor-pointer font-semibold text-[14px] ${pathname === "/Contacts" && "text-[#01A3D4]"}`}
+                className={`cursor-pointer font-semibold text-[14px] ${pathname === "/user/Contacts" && "text-[#01A3D4]"}`}
               >
                 Aloqa
               </li>

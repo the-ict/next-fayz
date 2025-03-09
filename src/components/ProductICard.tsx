@@ -11,7 +11,7 @@ type Props = {
 export default function ProductICard({ product }: Props) {
     return (
         <>
-            <Link href={`/Single/${product?.id}`}>
+            <Link href={`/user/Single/${product?.id}`}>
                 <div className='w-[265px] max-sm:w-full text-center hover:shadow-2xl dark:hover:bg-gray-400 dark:hover:text-black p-2 cursor-pointer transition'>
                     <Image width={1000} height={500} layout='responsive' src="/product1.png" alt="Products"
                         className='h-[300px] max-sm:w-full object-contain hover:scale-105 transition-all' />

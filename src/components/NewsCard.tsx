@@ -6,7 +6,7 @@ import React from 'react'
 
 export default function NewsCard() {
     return (
-        <Link href="/Yangiliklar/123">
+        <Link href="/user/Yangiliklar/123">
             <div className='w-[350px] max-sm:w-[vw] max-sm:h-[400px] p-5 rounded dark:bg-gray-200 bg-[#fdfdfd] h-max cursor-pointer mt-5 hover:bg-blue-100 transition-all'>
                 <div className='relative h-[400px] max-sm:h-[320px]'>
                     <Image

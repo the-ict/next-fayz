@@ -24,7 +24,7 @@ export default function Search() {
             <form className='rounded-[4px] border-2 border-solid border-[#01A3D4] p-3 flex items-center justify-between' onSubmit={(e: React.FormEvent<HTMLFormElement>): null | void => {
                 e.preventDefault()
                 if (search.length === 0) return null
-                window.location.replace(`/Search/${search}`)
+                window.location.replace(`/user/Search/${search}`)
             }}>
                 <input type="text"
                     onChange={(e: React.ChangeEvent<HTMLInputElement>): void => setSearch(e.target.value)}
