@@ -16,7 +16,7 @@ type Props = {
     setInfoMenu: React.Dispatch<React.SetStateAction<boolean>>;
 };
 
-const WebApp = window.Telegram.WebApp;
+const WebApp = window.Telegram?.WebApp;
 
 export default function Informations({ setInfoMenu }: Props) {
     const [phone, setPhone] = useState<string>("998");
