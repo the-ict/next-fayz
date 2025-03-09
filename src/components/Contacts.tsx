@@ -48,7 +48,7 @@ export default function Contacts() {
             <form className="flex flex-col gap-4 mt-3 w-[400px] max-sm:w-full " onSubmit={(e) => e.preventDefault()}>
                 <input value={phone} onChange={(e: React.ChangeEvent<HTMLInputElement>) => {
                     setPhone(e.target.value)
-                }} type="text" placeholder='Telefon raqam...' className='bg-[#AB9898] dark:bg-[#fff] dark:text-black py-3 px-2 rounded text-white outline-none' />
+                }} type="number" placeholder='Telefon raqam...' className='bg-[#AB9898] dark:bg-[#fff] dark:text-black py-3 px-2 rounded text-white outline-none' />
                 <textarea
                     value={desc}
                     onChange={(e: React.ChangeEvent<HTMLTextAreaElement>) => {
