@@ -1,19 +1,38 @@
 "use client"
 import ProductICard from '@/components/ProductICard'
 import Search from '@/components/Search'
-import { ProductItem } from '@/lib/data'
-import { searchProductsByName } from '@/lib/getData'
+import { IProduct } from '@/lib/models/Product'
 import { usePathname } from 'next/navigation'
 import React, { useEffect, useState } from 'react'
 
 
 export default function Page() {
-    const [products, setProducts] = useState<ProductItem[]>([])
+    const [products, setProducts] = useState<IProduct[]>([])
+    const [loading, setLoading] = useState<boolean>(false)
     const pathname = usePathname()
 
     useEffect(() => {
-        setProducts(searchProductsByName(pathname.split("/")[2]))
+
+        const handleSearch = async () => {
+            setLoading(true)
+            try {
+                const res = await fetch(`/api/product?name=${pathname.split("/")[3]}`)
+                const response = await res.json()
+
+                console.log("response: ", response)
+
+                setProducts(response.product)
+                setLoading(false)
+            } catch (error) {
+                setLoading(false)
+                console.log(error)
+            }
+        }
+
+        handleSearch()
     }, [pathname])
+
+
 
     return (
         <div className='min-h-[70vh]'>
@@ -27,7 +46,15 @@ export default function Page() {
                             )
                         })
                     ) : (
-                        <h3>Hech narsa topilmadi.</h3>
+                        loading ? (
+                            <div className='w-full justify-center flex items-center'>
+                                <div className='search-loading'></div>
+                            </div>
+                        ) : (
+                            <div>
+                                <h3>Hech narsa topilmadi</h3>
+                            </div>
+                        )
                     )
                 }
             </div>

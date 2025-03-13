@@ -7,7 +7,10 @@ import CategoryCard from "./CategoryCard";
 import { Carousel } from 'react-responsive-carousel';
 import Image from 'next/image';
 
+
+
 export default function Header() {
+
     return (
         <div className="mt-10">
             {/* Carousel */}
@@ -26,6 +29,7 @@ export default function Header() {
             <h3 className='text-[30px] font-semibold w-[300px] max-sm:text-[30px] mt-6'>
                 Kategoriya & Qidirish
             </h3>
+
             <Search />
 
             {/* Categories */}
@@ -61,6 +65,8 @@ export default function Header() {
                     </p>
                 </div>
             </div>
+
+
         </div>
     );
 }

@@ -1,12 +1,25 @@
 import mongoose, { Schema, Document } from "mongoose"
 
+interface IProperty {
+    name: string,
+    value: string
+}
+
+
+interface ICredit {
+    [key: string]: number;
+}
+
+
+
 export interface IProduct extends Document {
     name: string;
     description?: string;
-    properties: object;
+    properties: IProperty[];
     price: number;
-    image: string[];
+    images: string[];
     categories: string[];
+    credit: ICredit
 }
 
 const productSchema = new Schema<IProduct>({
@@ -18,7 +31,7 @@ const productSchema = new Schema<IProduct>({
         type: String,
     },
     properties: {
-        type: Object,
+        type: [Object],
         required: true,
     },
     price: {
@@ -29,9 +42,13 @@ const productSchema = new Schema<IProduct>({
         type: [String],
         required: true,
     },
-    image: {
+    images: {
         type: [String],
         required: true,
+    },
+    credit: {
+        type: Object,
+        required: true
     }
 }, { timestamps: true })
 

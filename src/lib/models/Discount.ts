@@ -4,7 +4,7 @@ export interface IDiscount extends Document {
     name: string,
     description: string,
     image: string,
-    interfaceImage: string
+    interfaceImage?: string
 }
 
 const Discount = new Schema<IDiscount>({

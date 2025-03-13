@@ -1,10 +1,15 @@
 "use client";
 
+import { IProduct } from "@/lib/models/Product";
 import { createSlice } from "@reduxjs/toolkit";
-import { ProductItem } from "@/lib/data"
+
+
+interface IProudctSlice extends IProduct {
+    overNumber: number
+}
 
 export interface productI {
-    products: ProductItem[]
+    products: IProudctSlice[]
 }
 
 
@@ -21,8 +26,7 @@ const productSlice = createSlice({
             state.products.push(action.payload)
         },
         removeProduct: (state, action) => {
-            // product id bizga keladi
-            state.products = state.products.filter(item => item.id !== action.payload)
+            state.products = state.products.filter(item => item._id !== action.payload)
         },
     }
 })

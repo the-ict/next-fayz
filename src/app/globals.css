@@ -175,3 +175,71 @@ input:checked+.sliderr:before {
 .sliderr.round:before {
   border-radius: 50%;
 }
+
+/* Charts */
+
+@layer base {
+  :root {
+    --chart-1: 12 76% 61%;
+    --chart-2: 173 58% 39%;
+    --chart-3: 197 37% 24%;
+    --chart-4: 43 74% 66%;
+    --chart-5: 27 87% 67%;
+  }
+
+  .dark {
+    --chart-1: 220 70% 50%;
+    --chart-2: 160 60% 45%;
+    --chart-3: 30 80% 55%;
+    --chart-4: 280 65% 60%;
+    --chart-5: 340 75% 55%;
+  }
+}
+
+
+/* Scrollbar */
+.custom-scroll::-webkit-scrollbar {
+  display: none;
+}
+
+.custom-scroll {
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+}
+
+
+
+/* Search animation */
+/* HTML: <div class="loader"></div> */
+.search-loading {
+  width: 55px;
+  aspect-ratio: 1;
+  --g1: conic-gradient(from 90deg at 3px 3px, #0000 90deg, #fff 0);
+  --g2: conic-gradient(from -90deg at 22px 22px, #0000 90deg, #fff 0);
+  background: var(--g1), var(--g1), var(--g1), var(--g2), var(--g2), var(--g2);
+  background-size: 25px 25px;
+  background-repeat: no-repeat;
+  animation: l7 1.5s infinite;
+}
+
+@keyframes l7 {
+  0% {
+    background-position: 0 0, 0 100%, 100% 100%
+  }
+
+  25% {
+    background-position: 100% 0, 0 100%, 100% 100%
+  }
+
+  50% {
+    background-position: 100% 0, 0 0, 100% 100%
+  }
+
+  75% {
+    background-position: 100% 0, 0 0, 0 100%
+  }
+
+  100% {
+    background-position: 100% 100%, 0 0, 0 100%
+  }
+}

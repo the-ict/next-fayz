@@ -71,7 +71,7 @@ export default function Informations({ setInfoMenu, toast }: Props) {
                 <Image src="/x.png" onClick={() => setInfoMenu(false)} className='absolute right-2 top-2 cursor-pointer' width={16} height={16} alt="Close" />
                 {
                     products.products.map(item => (
-                        <div className="flex items-center gap-2 border-b pb-2 mb-2" key={item?.id}>
+                        <div className="flex items-center gap-2 border-b pb-2 mb-2" key={item.name}>
                             <Image src="/product1.png" alt="Book img" width={40} height={40} />
                             <b className='flex-1 line-clamp-2'>{item?.name}</b>
                             <span className='font-bold'>{item.overNumber}</span>

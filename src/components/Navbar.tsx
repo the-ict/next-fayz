@@ -18,20 +18,20 @@ export default function Navbar() {
 
   const products = useSelector((store: RootState) => store.products);
   const [menuActive, setMenuActive] = useState<boolean>(false);
-  const [isChecked, setIsChecked] = useState(theme === "dark"); // Theme holatini saqlash
+  const [isChecked, setIsChecked] = useState(theme === "dark");
 
   const pathname = usePathname();
 
 
   const handleToggle = () => {
-    const newTheme = isChecked ? "light" : "dark"; // holatni o'zgartirish
-    setTheme(newTheme); // theme-ni o'zgartirish
-    setIsChecked(!isChecked); // switch holatini yangilash
+    const newTheme = isChecked ? "light" : "dark";
+    setTheme(newTheme);
+    setIsChecked(!isChecked);
   };
 
 
   return (
-    <div className="h-[60px] bg-[#fdfdfd] dark:bg-[#111111] transition-all flex justify-center sticky top-0 z-[10] shadow px-5">
+    <div className="h-[60px] bg-[#fdfdfd] dark:bg-[#333] transition-all flex justify-center sticky top-0 z-[10] shadow px-5">
       <div className="max-w-[1124px] h-full flex items-center w-full justify-between">
         {menuActive && (
           <div
@@ -157,7 +157,7 @@ export default function Navbar() {
             <input type="checkbox" checked={isChecked} onChange={handleToggle} />
             <span className="sliderr round"></span>
           </label>
-          <Link href={"/Checkout"}>
+          <Link href={"/user/Checkout"}>
             <FontAwesomeIcon icon={faCartShopping} className="text-[20px]" />
             {products.products.length > 0 && (
               <div className="w-5 h-5 rounded-full bg-purple-500 absolute -top-2 -right-2 flex justify-center items-center text-white">

@@ -4,24 +4,34 @@ import Product, { IProduct } from "@/lib/models/Product"
 
 await connect()
 
+
+
 export async function GET(req: Request) {
     try {
-        const id = new URL(req.url).searchParams.get("id")
+        const urlParams = new URL(req.url).searchParams;
+        const id = urlParams.get("id");
+        const name = urlParams.get("name");
 
-        if (!id) {
+        if (!id && !name) {
             return NextResponse.json({
                 message: "Not found!"
             }, {
                 status: 404
-            })
+            });
         }
 
-        const product = await Product.findById(id)
+        let product;
+        if (id) {
+            product = await Product.findById(id);
+        } else if (name) {
+            product = await Product.find({ name: { $regex: new RegExp(name, "i") } });
+        }
+
         if (!product) {
             return NextResponse.json({ error: 'Product not found' }, { status: 404 });
         }
 
-        return NextResponse.json({ message: "Success!", product })
+        return NextResponse.json({ message: "Success!", product });
 
     } catch (error) {
         return NextResponse.json({
@@ -29,9 +39,11 @@ export async function GET(req: Request) {
             error
         }, {
             status: 500,
-        })
+        });
     }
 }
+
+
 
 
 export async function POST(req: Request) {

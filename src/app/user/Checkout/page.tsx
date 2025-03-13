@@ -35,6 +35,7 @@ export default function Page() {
         { totalPrice: 0, overNumber: 0 } as ResultType
     );
 
+
     return (
         <div className="min-h-[50vh] mt-10" >
             {infoMenu && <Informations setInfoMenu={setInfoMenu} toast={toast} />}
@@ -53,21 +54,24 @@ export default function Page() {
                         </p>
 
                         <div className="checkout-details__items">
-                            {products.products.map((item: ProductItem) => (
-                                <div className="checkout-details__item dark:text-black" key={item.id}>
-                                    <Image src="/product1.png" alt="Book img" width={100} height={100} />
-                                    <b className="checkout-item__title line-clamp-2">{item.name}</b>
-                                    <span style={{ fontWeight: "bolder" }}>{item.overNumber}</span>
-                                    <b>{format(item.price, "UZS")}</b>
-                                    <Image
-                                        src="/trash.png"
-                                        alt=""
-                                        onClick={() => dispatch(removeProduct(item.id))}
-                                        width={25}
-                                        height={25}
-                                    />
-                                </div>
-                            ))}
+                            {products.products.map((item, index) => {
+                                console.log("what is an item: ", item)
+                                return (
+                                    <div className="checkout-details__item dark:text-black" key={index}>
+                                        <Image src="/product1.png" alt="Book img" width={100} height={100} />
+                                        <b className="checkout-item__title line-clamp-2">{item.name}</b>
+                                        <span style={{ fontWeight: "bolder" }}>{item.overNumber}</span>
+                                        <b>{format(item.price, "UZS")}</b>
+                                        <Image
+                                            src="/trash.png"
+                                            alt=""
+                                            onClick={() => dispatch(removeProduct(item._id))}
+                                            width={25}
+                                            height={25}
+                                        />
+                                    </div>
+                                )
+                            })}
                         </div>
                     </div>
 
@@ -81,7 +85,13 @@ export default function Page() {
                             <b>Narxi:</b>
                             <span>{format(result.totalPrice, "UZS")}</span>
                         </div>
-                        <button onClick={() => setInfoMenu(true)}>Sotib olish!</button>
+                        {
+                            products.products.length > 0 ? (
+                                <button onClick={() => setInfoMenu(true)}>Sotib olish!</button>
+                            ) : (
+                                <button onClick={() => window.location.replace("/")}>Maxsulot qo'shing</button>
+                            )
+                        }
                     </div>
                 </div>
             </div>

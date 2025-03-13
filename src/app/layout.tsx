@@ -1,7 +1,5 @@
-import Navbar from "@/components/Navbar";
 import type { Metadata } from "next";
 import "./globals.css";
-import Footer from "@/components/Footer";
 import ReduxProvider from "@/redux/reduxProvider";
 import ThemeProvider from "./themeProvider";
 
@@ -26,11 +24,7 @@ export default function RootLayout({
         className={`font-montserrat bg-[#F0E8E8] dark:bg-[#111111]`}>
         <ReduxProvider>
           <ThemeProvider>
-            <Navbar />
-            <div className="max-w-[1124px] mx-auto px-4">
-              {children}
-            </div>
-            <Footer />
+            {children}
           </ThemeProvider>
         </ReduxProvider>
       </body>

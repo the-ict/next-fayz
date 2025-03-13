@@ -30,13 +30,13 @@ export default function Footer() {
                 <Link href="/">
                     <li className='cursor-pointer mt-3 font-bold max-sm:text-[10px] hover:underline'>Biz haqimizda</li>
                 </Link>
-                <Link href="/Markets">
+                <Link href="/user/Markets">
                     <li className='cursor-pointer mt-3 font-bold max-sm:text-[10px] hover:underline'>Do'kon manzillari</li>
                 </Link>
-                <Link href="/News">
+                <Link href="/user/News">
                     <li className='cursor-pointer mt-3 font-bold max-sm:text-[10px] hover:underline'>Yangiliklar</li>
                 </Link>
-                <Link href="/Contacts">
+                <Link href="/user/Contacts">
                     <li className='cursor-pointer mt-3 font-bold max-sm:text-[10px] hover:underline'>Bog'lanish</li>
                 </Link>
             </ul>

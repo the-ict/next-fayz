@@ -53,11 +53,20 @@ export async function PUT(req: Request) {
 }
 
 
-export async function GET() {
+export async function GET(req: Request) {
     try {
-        const allDiscount = await Discount.find()
+        const id = new URL(req.url).searchParams.get("id")
 
-        return NextResponse.json({ message: "New Discount!", discount: allDiscount })
+        let discounts;
+
+        if (id) {
+            discounts = await Discount.findById(id)
+        } else {
+            discounts = await Discount.find()
+        }
+
+
+        return NextResponse.json({ message: "All Discounts!", discount: discounts })
     } catch (error) {
         NextResponse.json({
             error,
