@@ -19,7 +19,6 @@ Fayz kompaniyasi uchun yaratilgan e-commerce sayt. Maxsulotlarni savatga qo'shis
 - 📍 Map integration: Mahsulotni xarid qilish joyini xarita orqali tanlash
 - 🤖 Telegram bot orqali buyurtmalarni yuborish va tasdiqlash
 - 🔐 User Authentication: Ro‘yxatdan o‘tish va tizimga kirish
-- 💳 To‘lov tizimi integratsiyasi (agar qo‘shilgan bo‘lsa)
 
 ---
 
